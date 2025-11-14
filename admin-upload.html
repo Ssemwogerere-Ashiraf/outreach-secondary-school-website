@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Admin Upload — Outreach Gallery (Node)</title>
+  <link rel="icon" type="image/x-icon" href="favicon-32x32.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  <style>
+    /* Layout + typography */
+    :root{
+      --max-width:960px;
+      --card-bg:#ffffff;
+      --accent:#d98b00;
+      --brand:#b71c1c;
+    }
+    html,body{height:100%;margin:0;font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial; background:#f7f7fb;color:#222;}
+    main{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;}
+    .admin-card{width:100%;max-width:var(--max-width);padding:20px;border-radius:10px;background:var(--card-bg);box-shadow:0 8px 28px rgba(17,24,39,0.06);}
+
+    h1{font-size:clamp(1.15rem,1.4vw,1.5rem);margin:0 0 .5rem;}
+    .small-note{color:#444;font-size:.95rem;margin:6px 0;}
+
+    label{display:block;margin:10px 0 6px;font-weight:600;font-size:.98rem;}
+    input[type="text"], input[type="file"], textarea, select{
+      width:100%;padding:.6rem .75rem;border:1px solid #e8e8ee;border-radius:8px;font-size:1rem;
+      background:#fff;box-shadow:none;
+    }
+
+    /* Buttons */
+    .btn { background:var(--accent); color:#111; border:0; padding:.55rem .9rem; border-radius:8px; font-weight:600; }
+    .btn.alt{ background:transparent; border:1px solid #e0e0e0; color:#333; }
+    .btn:focus{ outline:3px solid rgba(217,139,0,0.18); outline-offset:3px; }
+
+    /* Inline row helpers */
+    .form-actions{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin-top:12px;}
+    #uploadStatus{margin-left:.5rem;color:#555;font-size:.95rem;min-height:1.2em;}
+
+    /* Preloader (kept but gentler) */
+    #preloader{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.35));z-index:12000;transition:opacity .4s ease;backdrop-filter: blur(2px);}
+    #preloader.hidden{opacity:0;pointer-events:none;visibility:hidden}
+
+    .overlay-text{background:rgba(255,255,255,0.06);padding:18px;border-radius:10px;color:#fff;text-align:center}
+
+    /* Nav overlay (mobile) */
+    .nav-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center;z-index:11000}
+    .nav-panel{background:#fff;padding:1rem;border-radius:10px;width:min(92%,360px);box-shadow:0 10px 30px rgba(0,0,0,0.12)}
+    .nav-panel a{display:block;padding:.5rem 0;color:var(--brand);font-weight:700;text-decoration:none;border-bottom:1px solid #f2f2f2}
+
+    /* Responsive tweaks */
+    @media (max-width:480px){
+      .admin-card{padding:16px;}
+      label{font-size:.95rem;}
+      .btn{width:100%;}
+      .form-actions{flex-direction:column;align-items:stretch;}
+      #uploadStatus{margin-left:0}
+    }
+  </style>
+</head>
+<body>
+  <!-- Optional preloader (hide with JS when ready) -->
+  <div id="preloader" aria-hidden="true">
+    <div class="overlay-text">
+      <h2 id="loadingMessage" style="margin:0;color:#fff;font-size:1.1rem">Loading admin interface…</h2>
+      <div style="height:8px"></div>
+      <div class="spinner-border text-light" role="status" aria-hidden="true" style="width:1.5rem;height:1.5rem"></div>
+    </div>
+  </div>
+
+  <!-- header -->
+  <header class="bg-warning shadow-sm" role="banner">
+    <div class="container d-flex align-items-center gap-3 py-2">
+      <img src="logo.png" alt="Outreach Logo" class="logo" height="64" width="64" style="border-radius:8px;object-fit:cover">
+      <div>
+        <div style="font-weight:800;color:var(--brand);font-size:clamp(1rem,1.6vw,1.4rem)">OUTREACH SECONDARY SCHOOL</div>
+        <button id="menuToggle" class="btn btn-sm" style="margin-top:6px;background:#fff;color:#000" aria-controls="navOverlay" aria-expanded="false" aria-label="Open navigation">Menu</button>
+      </div>
+    </div>
+
+    <!-- Custom Nav Overlay (hidden by default) -->
+    <div id="navOverlay" class="d-none nav-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="nav-panel" role="document">
+        <button id="navClose" class="btn alt" style="float:right">Close</button>
+        <nav style="margin-top:8px" aria-label="Primary">
+          <a href="index.html" onclick="closeMenu()">Home</a>
+          <a href="news.html" onclick="closeMenu()">News</a>
+          <a href="gallery.html" onclick="closeMenu()">Gallery</a>
+          <a href="contact.html" onclick="closeMenu()">Contact</a>
+          <a href="admissions.html" onclick="closeMenu()">Admissions</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <form id="adminUpload" class="admin-card" action="/admin/upload" method="post" enctype="multipart/form-data" novalidate>
+      <h1>Upload Gallery Image (Admin)</h1>
+      <p class="small-note">This form posts to <code>/admin/upload</code>. The server requires Basic Auth. Use only on an HTTPS admin connection.</p>
+
+      <label for="image">Image file *</label>
+      <input id="image" name="image" type="file" accept="image/*" required aria-required="true">
+
+      <label for="title">Title</label>
+      <input id="title" name="title" type="text" maxlength="150" placeholder="Short title for the photo" autocomplete="off">
+
+      <label for="caption">Caption</label>
+      <textarea id="caption" name="caption" rows="3" maxlength="800" placeholder="Short caption or description"></textarea>
+
+      <label for="category">Category</label>
+      <select id="category" name="category">
+        <option value="uncategorized">Uncategorized</option>
+        <option value="dormitory">Dormitory</option>
+        <option value="computer_lab">Computer Lab</option>
+        <option value="farm">School Farm</option>
+        <option value="vocational">Vocational</option>
+        <option value="students">Students</option>
+      </select>
+
+      <label for="tags">Tags (comma separated)</label>
+      <input id="tags" name="tags" type="text" placeholder="construction, donors, volunteers">
+
+      <div class="form-actions">
+        <button type="submit" class="btn" id="uploadBtn">Upload</button>
+        <button type="reset" class="btn alt">Reset</button>
+        <div id="uploadStatus" class="small-note" aria-live="polite"></div>
+      </div>
+
+      <hr>
+      <p class="small-note">Server setup reminder: set environment variables <strong>ADMIN_USER</strong> and <strong>ADMIN_PASS</strong> on the Node server. Protect this page via HTTPS and restrict access to admin users only.</p>
+    </form>
+  </main>
+
+  <script>
+    // Hide preloader when page finishes loading
+    window.addEventListener('load', () => {
+      const p = document.getElementById('preloader');
+      if (p) p.classList.add('hidden');
+    });
+
+    // Mobile nav open/close with accessibility attributes
+    const menuToggle = document.getElementById('menuToggle');
+    const navOverlay = document.getElementById('navOverlay');
+    const navClose = document.getElementById('navClose');
+
+    function openMenu(){
+      navOverlay.classList.remove('d-none');
+      navOverlay.setAttribute('aria-hidden', 'false');
+      menuToggle.setAttribute('aria-expanded', 'true');
+      // trap focus to close button for simple accessibility
+      if(navClose) navClose.focus();
+    }
+
+    function closeMenu(){
+      navOverlay.classList.add('d-none');
+      navOverlay.setAttribute('aria-hidden', 'true');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.focus();
+    }
+
+    if(menuToggle) menuToggle.addEventListener('click', openMenu);
+    if(navClose) navClose.addEventListener('click', closeMenu);
+    window.closeMenu = closeMenu; // preserve existing API used elsewhere
+
+    // Client-side file checks
+    const form = document.getElementById('adminUpload');
+    const fileInput = document.getElementById('image');
+    const statusEl = document.getElementById('uploadStatus');
+    const uploadBtn = document.getElementById('uploadBtn');
+
+    form.addEventListener('submit', (e) => {
+      statusEl.textContent = '';
+      const f = fileInput.files[0];
+      if (!f) {
+        e.preventDefault();
+        statusEl.textContent = 'Please choose a file.';
+        fileInput.focus();
+        return;
+      }
+
+      // 8MB limit (adjust to server limit)
+      const maxBytes = 8 * 1024 * 1024;
+      if (f.size > maxBytes) {
+        e.preventDefault();
+        statusEl.textContent = 'File exceeds 8MB limit.';
+        fileInput.focus();
+        return;
+      }
+
+      // accept common image types
+      if (!/image\/(jpeg|png|webp|gif|bmp)/.test(f.type)) {
+        e.preventDefault();
+        statusEl.textContent = 'Use JPEG/PNG/WebP/GIF/BMP images only.';
+        fileInput.focus();
+        return;
+      }
+
+      // Optional: disable submit while uploading to prevent duplicates
+      uploadBtn.disabled = true;
+      uploadBtn.textContent = 'Uploading…';
+    });
+
+    // Show basic preview filename when a file is selected
+    fileInput.addEventListener('change', () => {
+      const f = fileInput.files[0];
+      if (!f) { statusEl.textContent = ''; return; }
+      statusEl.textContent = `Selected: ${f.name} (${Math.round(f.size/1024)} KB)`;
+    });
+
+    // Re-enable button if user resets form
+    form.addEventListener('reset', () => {
+      uploadBtn.disabled = false;
+      uploadBtn.textContent = 'Upload';
+      statusEl.textContent = '';
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+</body>
+</html>

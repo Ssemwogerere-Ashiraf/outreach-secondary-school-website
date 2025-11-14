@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Application Submitted - Outreach SS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: url('School_Administration_block.jpg') no-repeat center center fixed;
+      background-size: cover;
+      overflow: hidden; /* keep confetti inside viewport */
+    }
+    .overlay {
+      background-color: rgba(255, 255, 255, 0.85);
+      padding: 40px;
+      border-radius: 10px;
+      max-width: 700px;
+      margin: auto;
+      opacity: 0;
+      transform: scale(0.95);
+      animation: fadeZoomIn 1.2s ease forwards;
+      z-index: 2;
+      position: relative;
+    }
+    @keyframes fadeZoomIn {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    canvas#confettiCanvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body class="d-flex align-items-center justify-content-center vh-100">
+
+  <!-- Confetti Canvas -->
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- Overlay Content -->
+  <div class="overlay text-center shadow-lg">
+    <img src="logo.png" alt="Outreach Logo" height="120" class="mb-4">
+    <h1 class="text-success">✅ Application Submitted</h1>
+    <p class="lead mt-3">
+      Thank you for applying to <strong>Outreach Secondary School</strong>.  
+      We have received your application and will contact you soon.
+    </p>
+    <hr class="my-4">
+    <p>If you have any questions, please reach out:</p>
+    <p>📧 info@outreachschool.org | 📞 +256 701 422 100</p>
+    <a href="index.html" class="btn btn-primary mt-3">Return to Home</a>
+  </div>
+
+  <!-- Confetti Script -->
+  <script>
+    const canvas = document.getElementById('confettiCanvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const confetti = [];
+    const colors = ['#ff0', '#f0f', '#0ff', '#f00', '#0f0', '#00f'];
+
+    function ConfettiPiece() {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height - canvas.height;
+      this.size = Math.random() * 8 + 4;
+      this.color = colors[Math.floor(Math.random() * colors.length)];
+      this.speed = Math.random() * 3 + 2;
+      this.angle = Math.random() * 360;
+    }
+
+    function drawConfetti() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      confetti.forEach(p => {
+        ctx.fillStyle = p.color;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+        p.y += p.speed;
+        if (p.y > canvas.height) {
+          p.y = -10;
+          p.x = Math.random() * canvas.width;
+        }
+      });
+      requestAnimationFrame(drawConfetti);
+    }
+
+    for (let i = 0; i < 150; i++) {
+      confetti.push(new ConfettiPiece());
+    }
+
+    drawConfetti();
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
+
+</body>
+</html>

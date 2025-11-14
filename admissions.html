@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Admissions — Outreach Secondary School</title>
+  <meta name="description" content="Admissions information, requirements, dates and fees for Outreach Secondary School" />
+  <link rel="icon" type="image/x-icon" href="favicon-32x32.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+  <style>
+    :root{
+      --brand:#b71c1c;
+      --accent:#f7c900;
+      --max-width:1100px;
+      --card-radius:10px;
+    }
+    html,body{height:100%;margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial;}
+    body{background:#fff;color:#222;line-height:1.5;font-size:clamp(15px,1rem + 0.4vw,18px);}
+
+    /* Header */
+    .site-header{background:var(--accent);color:#111}
+    .site-brand{display:flex;gap:.75rem;align-items:center;padding:.75rem 1rem;max-width:var(--max-width);margin:0 auto}
+    .logo{width:52px;height:auto;border-radius:8px;object-fit:cover}
+    .brand-text{font-weight:800;color:var(--brand);letter-spacing:.02em}
+
+    /* Nav overlay (mobile) */
+    .nav-overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.55);z-index:1200}
+    .nav-panel{background:#fff;padding:1rem;border-radius:10px;width:min(92%,380px);box-shadow:0 12px 30px rgba(0,0,0,.12)}
+    .nav-panel a{display:block;padding:.6rem 0;color:var(--brand);font-weight:700;text-decoration:none;border-bottom:1px solid #f2f2f2}
+
+    /* Page title */
+    .page-hero{background:#2f8f46;color:#fff;padding:2.25rem 1rem;text-align:center}
+    .page-hero h1{margin:0;font-size:clamp(1.25rem,2.6vw,2rem)}
+    .page-hero p{margin:.5rem 0 0}
+
+    /* Main layout */
+    .container-main{max-width:var(--max-width);margin:0 auto;padding:1rem}
+    .card-like{background:#fff;border:1px solid #eee;border-radius:var(--card-radius);padding:1.25rem;height:100%}
+    .card-title{color:#0b5cff;font-weight:700}
+
+    /* Fees table */
+    .table-responsive{overflow:auto;-webkit-overflow-scrolling:touch}
+    table thead th{white-space:nowrap}
+
+    /* CTA */
+    .cta { text-align:center;margin-top:1.5rem; }
+
+    /* Back to top */
+    .back-to-top{position:fixed;right:1rem;bottom:1rem;z-index:1100}
+
+    /* Accessibility focus */
+    a:focus,button:focus,input:focus,select:focus{outline:3px solid rgba(11,92,255,0.14);outline-offset:3px;border-radius:6px}
+
+    /* Small screen tweaks */
+    @media (max-width:780px){
+      .site-brand{padding:.5rem}
+      .page-hero{padding:1.25rem}
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header" role="banner">
+    <div class="site-brand">
+      <img src="logo.png" alt="Outreach logo" class="logo">
+      <div>
+        <div class="brand-text">OUTREACH SECONDARY SCHOOL</div>
+   </div>
+
+      <button id="menuToggle" class="btn btn-sm btn-light ms-auto d-md-none" aria-controls="navOverlay" aria-expanded="false" aria-label="Open menu">Menu</button>
+      <nav class="d-none d-md-block ms-3">
+        <a href="index.html" class="me-3 text-dark">Home</a>
+        <a href="about.html" class="me-3 text-dark">About</a>
+        <a href="admissions.html" class="me-3 text-dark">Admissions</a>
+        <a href="contact.html" class="text-dark">Contact</a>
+      </nav>
+      <br>
+        </div>
+        <form class="mt-3" action="search.html" method="GET" role="search">
+          <input name="q" type="search" class="form-control form-control-sm" placeholder="Search site..." />
+        </form>
+
+    <!-- Mobile nav overlay -->
+    <div id="navOverlay" class="d-none nav-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="nav-panel" role="document">
+        <button id="navClose" class="btn btn-sm btn-outline-secondary" style="float:right">Close</button>
+        <nav style="margin-top:8px" aria-label="Primary">
+          <a href="index.html" onclick="closeMenu()">Home</a>
+          <a href="news.html" onclick="closeMenu()">News</a>
+          <a href="gallery.html" onclick="closeMenu()">Gallery</a>
+          <a href="contact.html" onclick="closeMenu()">Contact</a>
+          <a href="admissions.html" onclick="closeMenu()">Admissions</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container-main">
+      <h1>Admissions</h1>
+      <p class="lead mb-0">Join our inclusive and values-driven learning community</p>
+    </div>
+  </section>
+
+  <main class="container-main" role="main">
+    <div class="row g-4 my-4">
+      <div class="col-md-6">
+        <div class="card-like">
+          <h3 class="card-title">Admission Requirements</h3>
+          <ul class="mt-3 mb-0">
+            <li>✔ Completed PLE or UCE certificate</li>
+            <li>✔ Recommendation from previous school</li>
+            <li>✔ Parent/guardian national ID copy</li>
+            <li>✔ Two passport-size photos</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card-like">
+          <h3 class="card-title">Key Dates</h3>
+          <ul class="mt-3 mb-0">
+            <li>📅 Application opens: January 10, 2026</li>
+            <li>📅 Interviews: February 5–10, 2026</li>
+            <li>📅 Admission results: February 15, 2026</li>
+            <li>📅 Term begins: March 4, 2026</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <section id="fees" class="my-4">
+      <h3 class="text-center mb-3" style="color:#b71c1c">School Fees Structure 2025</h3>
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead class="table-dark">
+            <tr><th>Class</th><th>Term I</th><th>Term II</th><th>Term III</th><th>Total</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>S.1 - S.3</td><td>UGX 650,000</td><td>UGX 600,000</td><td>UGX 550,000</td><td>UGX 1,800,000</td></tr>
+            <tr><td>S.4 - S.6</td><td>UGX 750,000</td><td>UGX 700,000</td><td>UGX 650,000</td><td>UGX 2,100,000</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small text-muted">Includes tuition, meals, library, and ICT access. Uniform and exam fees charged separately.</p>
+    </section>
+
+    <div class="cta">
+      <a href="admissions-wizzard.html" class="btn btn-warning btn-lg" role="button">Start Application</a>
+    </div>
+
+  </main>
+
+  <footer class="site-footer bg-light text-center py-3 small text-muted">
+    <div class="container">
+      <p class="mb-1"><strong>Contact Us</strong></p>
+      <p class="mb-1">Headteacher: <br>Mr. Okello James - +256773267910</p>
+      <p class="mb-1">Deputy Headteacher: <br>Ms. Ruth Achen - +256789009011</p>
+      <p class="mb-1">Director of Studies: <br>Mr. Kato Emmanuel - +256784456789</p>
+      <p class="mb-1">&copy; 2025 Outreach Secondary School. All rights reserved.</p>
+      <p class="mb-0">Email: <a href="mailto:info@outreachschool.org">info@outreachschool.org</a> | Location: Baggala, Mpigi District, Uganda</p>
+    </div>
+  </footer>
+
+  <button id="backToTop" class="btn btn-warning back-to-top" aria-label="Back to top">⬆ Top</button>
+
+  <script>
+    // Mobile nav toggle with accessibility
+    const menuToggle = document.getElementById('menuToggle');
+    const navOverlay = document.getElementById('navOverlay');
+    const navClose = document.getElementById('navClose');
+    const backToTop = document.getElementById('backToTop');
+
+    function openMenu(){
+      navOverlay.classList.remove('d-none');
+      navOverlay.setAttribute('aria-hidden','false');
+      if(menuToggle) menuToggle.setAttribute('aria-expanded','true');
+      if(navClose) navClose.focus();
+    }
+    function closeMenu(){
+      navOverlay.classList.add('d-none');
+      navOverlay.setAttribute('aria-hidden','true');
+      if(menuToggle) menuToggle.setAttribute('aria-expanded','false');
+      menuToggle.focus();
+    }
+    if(menuToggle) menuToggle.addEventListener('click', openMenu);
+    if(navClose) navClose.addEventListener('click', closeMenu);
+    window.closeMenu = closeMenu;
+
+    // Back to top
+    backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Keyboard: close nav overlay with Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !navOverlay.classList.contains('d-none')) closeMenu();
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+</body>
+</html>

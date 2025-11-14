@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>School Rules & Regulations - Outreach SS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="/image/x-icon" href="favicon-32x32.png">
+   <!-- bootstrap cdn -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+   <style>
+    /* body { min-height: 100vh; display: flex; flex-direction: column; } */
+    main { flex: 1; display: flex; align-items: center; justify-content: center; }
+/* Responsive PDF viewer */
+.pdf-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 28px rgba(11,24,38,0.06);
+  background:#fff;
+}
+
+/* Make embed/iframe fill the box responsively */
+.pdf-frame {
+  width: 100%;
+  height: clamp(60vh, 75vh, 90vh); /* tall on desktop, shorter on phones */
+  border: none;
+  display: block;
+}
+
+/* Small-screen fallback area and action bar */
+.pdf-actions {
+  display:flex;
+  gap:.5rem;
+  align-items:center;
+  justify-content:space-between;
+  padding:.6rem .75rem;
+  background:linear-gradient(180deg, rgba(0,0,0,0.03), rgba(0,0,0,0.02));
+  border-top:1px solid #eee;
+}
+.pdf-actions .left { font-size:.95rem; color:#333; }
+.pdf-actions .right { display:flex; gap:.5rem; }
+
+@media (max-width:576px){
+  .pdf-frame { height: 55vh; }
+  .pdf-actions { flex-direction:column; align-items:stretch; gap:.45rem; }
+  .pdf-actions .right { justify-content:space-between; }
+}
+
+/* Make the "open in full window" button visually subtle */
+.btn-pdf {
+  background:#f7c900;border:0;color:#111;padding:.45rem .6rem;border-radius:8px;font-weight:700;
+}
+.btn-download {
+  background:transparent;border:1px solid #ddd;color:#222;padding:.35rem .6rem;border-radius:8px;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- header -->
+  <header class="bg-light shadow-sm" style="padding: 0; margin-bottom: 0%;">
+     <div class="site-brand">
+       <img src="logo.png" alt="Outreach Logo" class="logo">
+       <div>
+         <strong style="font-weight: bolder; font-size: large; color: rgb(10, 7, 7); font-family: Verdana, Geneva, Tahoma, sans-serif;">
+           <b style="font-weight: bold; font-size: large; color: red;">O</b>UTREACH 
+           <b style="font-weight: bold; font-size: large; color: red;">S</b>ECONDARY 
+           <b style="font-weight: bold; font-size: large; color: red;">S</b>CHOOL
+         </strong>
+       </div>
+
+       <nav class="navbar navbar-light container position-relative ms-auto d-none d-md-block" style="margin-top: 10px;">
+         <a class="navbar-brand fw-bold" href="index.html"></a>
+       </nav>
+
+       <button id="menuToggle" class="btn btn-sm btn-outline-dark d-md-none ms-auto" aria-controls="navOverlay" aria-expanded="false" aria-label="Open menu">Menu</button>
+     </div>
+
+    <!-- <nav class="navbar navbar-light container position-relative d-md-none" style="margin-top: 10px;">
+      <a class="navbar-brand fw-bold" href="index.html"></a>
+      <button class="navbar-toggler" type="button" onclick="toggleMenu()" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </nav> -->
+
+    <!-- Custom Nav Overlay -->
+    <div id="navOverlay" class="d-none position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-75 d-flex justify-content-center align-items-center z-3" aria-hidden="true">
+      <div class="bg-white bg-opacity-75 rounded p-4 text-center" role="dialog" aria-modal="true">
+        <a href="index.html" class="d-block mb-3 nav-link fw-bold" onclick="closeMenu()">Home</a>
+        <a href="news.html" class="d-block mb-3 nav-link fw-bold" onclick="closeMenu()">News</a>
+        <a href="gallery.html" class="d-block mb-3 nav-link fw-bold" onclick="closeMenu()">Gallery</a>
+        <a href="contact.html" class="d-block mb-3 nav-link fw-bold" onclick="closeMenu()">Contact</a>
+        <a href="admissions.html" class="d-block nav-link fw-bold" onclick="closeMenu()">Admissions</a>
+        <div style="margin-top:.75rem">
+          <button id="navClose" class="btn btn-sm btn-outline-secondary" onclick="closeMenu()">Close</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<main class="container py-4">
+  <div class="pdf-container">
+    <!-- Responsive embed; using <embed> works widely, iframe is an alternative -->
+    <embed id="rulesPdf" class="pdf-frame" src="rules.pdf" type="application/pdf">
+    <!-- Action bar: download and open full-screen -->
+    <div class="pdf-actions" role="region" aria-label="PDF actions">
+      <div class="left">School Rules & Regulations — Outreach Secondary School</div>
+      <div class="right">
+        <a class="btn btn-download" href="rules.pdf" download aria-label="Download rules as PDF">Download PDF</a>
+        <button id="openFull" class="btn-pdf" type="button" aria-label="Open PDF in new tab">Open full view</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+
+    <!-- Footer -->
+  <footer class="bg-light text-center py-3 small text-muted">
+      <div class="container">
+        <p><b>Contact Us!!</b></p>
+    <p class="mb-1">📞 Headteacher: Mr. Ssemakula David - +256 701 234567</p>
+    <p class="mb-1">📞 Deputy Headteacher: Ms. Namukasa Grace - +256 772 345678</p>
+    <p class="mb-1">📞 Director of Studies: Mr. Kato Emmanuel - +256 784 456789</p>
+     <br>
+    &copy; 2025 Outreach Secondary School. All rights reserved.
+    <p>Email: info@outreachschool.org | Tel: +256 701 422 100</p>
+    <p>Location: Baggala, Mpigi District, Uganda</p>
+  </footer>
+
+    <!-- script -->
+   <script>
+// Open the PDF in a new tab (full view) and try to request fullscreen on supported browsers
+document.getElementById('openFull').addEventListener('click', function () {
+  const url = document.getElementById('rulesPdf').getAttribute('src') || 'rules.pdf';
+  // open in new tab so mobile users get their native viewer
+  const win = window.open(url, '_blank');
+  if (!win) return;
+  // try to request fullscreen on the embed element in the current page (best-effort)
+  const embed = document.getElementById('rulesPdf');
+  if (embed && embed.requestFullscreen) {
+    embed.requestFullscreen().catch(()=>{/* ignore */});
+  }
+});
+
+</script>
+
+<!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js" defer></script>
+</body>
+</html>

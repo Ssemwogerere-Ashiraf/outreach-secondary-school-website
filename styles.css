@@ -1,0 +1,230 @@
+/* Root / fluid typography */
+:root{
+  --base: 1rem;
+  --accent: #0b5cff;
+  --max-width: 1100px;
+  --brand-bg: #0d6efd;
+}
+
+html { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; font-size: 16px; box-sizing: border-box; }
+*,*::before,*::after{ box-sizing: inherit; }
+
+body { margin:0; color:#222; background:#fff; line-height:1.5; font-size: clamp(0.95rem, 0.9rem + 0.6vw, 1.05rem); }
+
+/* Preloader */
+.preloader { position: fixed; inset:0; background:rgba(0,0,0,0.65); color:#fff; z-index:1050; }
+.preloader .overlay-text h2 { margin:0; font-size: clamp(1rem, 1rem + 1vw, 1.5rem); }
+#preloader {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  background: radial-gradient(circle at center,
+              #ff8c00 0%,   /* Dark Orange */
+              #8b0000 50%,  /* Dark Red */
+              #b8860b 100%  /* Dark Yellow */
+            );
+  animation: shinePulse 3s infinite alternate;
+  transition: opacity 0.8s ease;
+}
+
+#preloader.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes shinePulse {
+  0%   { filter: brightness(0.7); }
+  50%  { filter: brightness(1.2); }
+  100% { filter: brightness(0.9); }
+}
+
+/* Message board styling */
+.message-board {
+  background: rgba(0,0,0,0.7); /* dark transparent board */
+  padding: 25px 40px;
+  border-radius: 12px;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  max-width: 80%;
+}
+
+.message-board h2 {
+  font-size: 1.6rem;
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+
+/* Header */
+.site-header { background: linear-gradient(90deg, #0b5cff 0%, #0656d1 100%); color: #fff; }
+.site-header .container { max-width: var(--max-width); }
+.logo { width:48px; height:auto; display:inline-block; border-radius:6px; object-fit:cover; }
+.brand { font-weight:700; font-size: clamp(1rem, 1rem + 1vw, 1.25rem); letter-spacing:0.02em; display:inline-block; vertical-align:middle; margin-left:.5rem; color:#fff; }
+.brand-accent { font-weight:900; color:#ffd43b; }
+
+/* Mobile nav overlay */
+.nav-overlay { position: fixed; inset:0; background: rgba(0,0,0,0.6); display:flex; align-items:center; justify-content:center; z-index:1200; }
+.nav-panel { background: #fff; border-radius:8px; padding:1.25rem; width:min(92%,420px); box-shadow:0 6px 20px rgba(0,0,0,0.25); }
+.nav-panel nav { display:flex; flex-direction:column; gap:.5rem; }
+.nav-panel .nav-link { color:#0b5cff; text-decoration:none; font-weight:600; padding:.5rem 0; border-bottom:1px solid #f1f1f1; }
+.nav-close { background:transparent; border:0; color:#333; font-weight:700; float:right; }
+
+/* Hero */
+.hero-section .hero-item { min-height:360px; background-size:cover; background-position:center; display:flex; align-items:center; color:#fff; }
+.hero-content { background: linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.55) 100%); padding:2rem; border-radius:8px; display:inline-block; max-width:900px; }
+@media(min-width:992px){ .hero-item { min-height:520px; } .hero-content { padding:3rem; } }
+
+/* Cards and layout */
+.container { max-width: var(--max-width); padding-left:1rem; padding-right:1rem; }
+.info-card .card-body { display:flex; flex-direction:column; gap:.25rem; }
+.contact-card { background:#f8f9fa; }
+
+/* Gallery */
+.project-gallery img { width:100%; height:auto; object-fit:cover; border-radius:6px; }
+
+/* Table responsive tweaks */
+.table-responsive { overflow:auto; -webkit-overflow-scrolling: touch; }
+.table td, .table th { vertical-align: middle; }
+
+/* Clock wrap + tooltip */
+.clock-wrap { max-width:460px; width:100%; }
+.clock { position: relative; display:inline-block; }
+.time-point {
+  position:absolute; right:12px; bottom:26px; background:transparent; border:0; font-size:1.4rem; line-height:1; color:#111; cursor:pointer;
+  width:36px; height:36px; display:flex; align-items:center; justify-content:center; border-radius:999px;
+}
+.tooltip {
+  position:absolute; left:50%; transform:translateX(-50%) translateY(-10px); bottom:66px; background:#111; color:#fff; padding:.4rem .6rem; border-radius:6px; font-size:.9rem; white-space:nowrap; display:none;
+}
+.tooltip.show { display:block; }
+
+/* Quick links */
+.quick-list a { color: inherit; text-decoration:none; font-weight:600; }
+.quick-list a:hover { text-decoration:underline; }
+
+/* Footer */
+.site-footer { font-size:.95rem; }
+
+/* Back to top */
+.back-to-top { position: fixed; right:1rem; bottom:1rem; z-index:1100; }
+
+/* Accessibility focus */
+a:focus, button:focus, .nav-link:focus { outline:3px solid rgba(11,92,255,0.18); outline-offset:3px; border-radius:6px; }
+
+/* Small screen adjustments */
+@media (max-width: 780px){
+  .brand { font-size: 1rem; }
+  .hero-content { padding:1rem; }
+  .time-point { right:10px; bottom:18px; }
+  .tooltip { bottom:56px; font-size:.85rem; }
+}
+
+
+/* Header polish for the Board page (non-invasive) */
+header.bg-light.shadow-sm {
+  background: linear-gradient(90deg, #f7c900 0%, #f2b600 100%) !important;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  padding: 0.35rem 0;
+}
+
+/* Make the embedded brand area tidy and responsive */
+header .logo {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-right: 12px;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+header > a, header .site-brand, header .navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+/* Strong / title styling inside header (keeps your words) */
+header strong {
+  line-height: 1;
+  display: inline-block;
+  color: #b71c1c;
+  font-weight: 800;
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Accent the big letters O S S while preserving markup */
+header strong b {
+  color: #d62828;
+  font-size: 1.2rem;
+  margin-right: 2px;
+}
+
+/* Make the header compact on small screens and wrap gracefully */
+@media (max-width: 768px) {
+  header .logo { width: 48px; height:48px; }
+  header strong { font-size: 1rem; }
+  header > a { gap: 8px; padding: .45rem 0; }
+}
+
+/* Navbar position and toggler spacing */
+header .navbar { margin-top: 6px; padding-left: .5rem; padding-right: .5rem; }
+header .navbar-toggler { border: 0; }
+header .navbar-toggler-icon { filter: brightness(0.2); }
+
+/* Nav overlay visual refinement (so your existing overlay looks polished) */
+#navOverlay {
+  padding: 1.25rem;
+  box-sizing: border-box;
+}
+#navOverlay .bg-white {
+  max-width: 420px;
+  width: min(94%, 420px);
+  box-shadow: 0 14px 40px rgba(11,24,38,0.08);
+  border-radius: 12px;
+}
+
+/* Ensure header remains accessible and has good contrast for text inside */
+header a, header .nav-link { color: #111 !important; }
+header a:focus, header button:focus { outline: 3px solid rgba(214,40,40,0.12); outline-offset: 3px; }
+
+/* Back-to-top button baseline styling (if you want to override, adjust variables) */
+.back-to-top {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 1200;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  background: linear-gradient(180deg,#f7c900,#f2b600);
+  color: #111;
+  box-shadow: 0 8px 20px rgba(11,24,38,0.12);
+  border: none;
+  cursor: pointer;
+  transition: transform .18s ease, opacity .18s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* visible state */
+.back-to-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+
+/* hover */
+.back-to-top:hover { transform: translateY(-3px); }
+
+/* small-screen tweak */
+@media (max-width: 420px) {
+  .back-to-top { width:44px; height:44px; right:.75rem; bottom:.75rem; }
+}

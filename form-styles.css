@@ -1,0 +1,14 @@
+.application-form{display:grid;gap:12px}
+.application-form fieldset{border:1px solid rgba(0,0,0,0.06);padding:12px;border-radius:8px}
+.application-form label{display:block;margin:8px 0 4px;font-weight:600}
+.application-form input[type="text"],
+.application-form input[type="email"],
+.application-form input[type="tel"],
+.application-form input[type="date"],
+.application-form input[type="number"],
+.application-form select,
+.application-form textarea{width:100%;padding:10px;border:1px solid #e6e6e6;border-radius:6px;font-size:15px}
+.application-form input[type="file"]{padding:6px}
+.form-actions{display:flex;gap:12px;margin-top:6px}
+.conditional.hidden{display:none}
+.small{color:var(--muted)}

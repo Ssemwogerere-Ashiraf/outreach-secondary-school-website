@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Board - Outreach Secondary School</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="/image/x-icon" href="favicon-32x32.png">
+ <!-- CDN Script -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+      /* Nav overlay styling */
+    .nav-overlay {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,.55);
+      z-index: 1200;
+    }
+    .nav-panel {
+      background: #fff;
+      padding: 1rem;
+      border-radius: 10px;
+      width: min(92%,380px);
+      box-shadow: 0 12px 30px rgba(0,0,0,.12);
+    }
+    .nav-panel a {
+      display: block;
+      padding: .6rem 0;
+      color: #b71c1c;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 1px solid #f2f2f2;
+    }
+</style>
+<body>
+
+  <!-- Header -->
+  <header class="bg-light shadow-sm">
+    <div class="container d-flex align-items-center justify-content-between py-2">
+      <div class="d-flex align-items-center gap-2">
+        <img src="logo.png" alt="Outreach Logo" style="width:56px;height:56px;border-radius:8px;object-fit:cover">
+        <span class="fw-bold text-danger">OUTREACH SECONDARY SCHOOL</span>
+      </div>
+
+      <!-- Desktop nav -->
+      <nav class="d-none d-md-flex gap-3">
+        <a href="index.html" class="text-dark fw-semibold">Home</a>
+        <a href="news.html" class="text-dark fw-semibold">News</a>
+        <a href="gallery.html" class="text-dark fw-semibold">Gallery</a>
+        <a href="contact.html" class="text-dark fw-semibold">Contact</a>
+        <a href="admissions.html" class="text-dark fw-semibold">Admissions</a>
+      </nav>
+
+      <!-- Mobile toggle -->
+      <button id="menuToggle" class="btn btn-sm btn-outline-dark d-md-none" aria-controls="navOverlay" aria-expanded="false" aria-label="Open menu">
+        Menu
+      </button>
+    </div>
+    <!-- Mobile nav overlay -->
+    <div id="navOverlay" class="d-none nav-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="nav-panel" role="document">
+        <button id="navClose" class="btn btn-sm btn-outline-secondary mb-3">Close</button>
+        <nav aria-label="Primary">
+          <a href="index.html" onclick="closeMenu()">Home</a>
+          <a href="news.html" onclick="closeMenu()">News</a>
+          <a href="gallery.html" onclick="closeMenu()">Gallery</a>
+          <a href="contact.html" onclick="closeMenu()">Contact</a>
+          <a href="admissions.html" onclick="closeMenu()">Admissions</a>
+        </nav>
+      </div>
+    </div>
+  <form class="mt-3" style="padding-right: auto; padding-left: auto;" action="search.html" method="GET" role="search">
+    <input name="q" type="search" class="form-control form-control-sm" placeholder="Search site..." />
+  </form>
+</header>
+  <!-- Page Title -->
+  <section class="bg-dark text-white text-center py-5">
+    <div class="container">
+      <h2 class="display-5">Board of Governors & Administration</h2>
+      <p class="lead">Meet the dedicated team guiding our school's mission and growth.</p>
+    </div>
+  </section>
+
+<!-- Board Members Grid -->
+<main class="container py-5">
+  <h2 class="text-center mb-5">Board of Governors</h2>
+  <div class="row g-4">
+
+    <!-- Chairperson -->
+    <div class="col-md-6 col-lg-4">
+      <div class="card shadow-sm h-100 text-center">
+        <img src="Chairperson.jpg" class="card-img-top" alt="Chairperson">
+        <div class="card-body">
+          <h5 class="card-title">Dr. Odama Modest Kayi</h5>
+          <p class="card-text small">Chairperson of the Board</p>
+          <button class="btn btn-outline-primary btn-sm"
+                  data-bs-toggle="modal" data-bs-target="#lightboxModal"
+                  data-bs-img="Chairperson.jpg"
+                  data-bs-email="modakayi@gmail.com"
+                  data-bs-phone="+256775430571"
+                  data-bs-linkedin="https://www.bing.com/ck/a?!&&p=f9ffa6e968ae64d2116f546b52a1887dcb6df41d207be47886118658e8fd998bJmltdHM9MTc2MjgxOTIwMA&ptn=3&ver=2&hsh=4&fclid=20d421ff-b936-6bd3-3afd-3767b8b46a65&psq=odama+Modest+Kayi&u=a1aHR0cHM6Ly91Zy5saW5rZWRpbi5jb20vaW4vbW9kZXN0LW8tZGFtYS1rYXlpLTUzNDI1Njc1"
+                  data-bs-caption="Dr. Odama Modest Kayi - Chairperson"
+                  data-bs-bio="Dr. Odama has over 20 years of experience in education leadership, guiding Outreach SS with a vision for inclusive learning and community growth.">
+            Read Bio
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Vice Chairperson -->
+    <div class="col-md-6 col-lg-4">
+      <div class="card shadow-sm h-100 text-center">
+        <img src="ashley.jpg" class="card-img-top" alt="Vice Chairperson">
+        <div class="card-body">
+          <h5 class="card-title">Prof. Ssemwogerere Ashiraf</h5>
+          <p class="card-text small">Vice Chairperson</p>
+          <button class="btn btn-outline-primary btn-sm"
+                  data-bs-toggle="modal" data-bs-target="#lightboxModal"
+                  data-bs-img="ashley.jpg"
+                  data-bs-email="ashirafssemwogerere263@gmail.com"
+                  data-bs-phone="+256701422100"
+                  data-bs-linkedin="https://www.bing.com/ck/a?!&&p=164ef1a22e976a1ee364d6aa345b22ddc32b456428b49ac2aaabc2e573c436a7JmltdHM9MTc2MjgxOTIwMA&ptn=3&ver=2&hsh=4&fclid=20d421ff-b936-6bd3-3afd-3767b8b46a65&psq=ssemwogerere+ashiraf&u=a1aHR0cHM6Ly91Zy5saW5rZWRpbi5jb20vaW4vc3NlbXdvZ2VyZXJlLWFzaGlyYWYtYjU5YjkyMzI1"
+                  data-bs-caption="Prof. Ssemwogerere Ashiraf - Vice Chairperson"
+                  data-bs-bio="Prof. Ashiraf is one of the founding benefactors of Outreach SS. His vision and support continue to shape the school’s infrastructure and long-term strategy.">
+            Read Bio
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Secretary -->
+    <div class="col-md-6 col-lg-4">
+      <div class="card shadow-sm h-100 text-center">
+        <img src="secretary.jpg" class="card-img-top" alt="Secretary">
+        <div class="card-body">
+          <h5 class="card-title">Sr. Naturinda Christine</h5>
+          <p class="card-text small">Board Secretary</p>
+          <button class="btn btn-outline-primary btn-sm"
+                  data-bs-toggle="modal" data-bs-target="#lightboxModal"
+                  data-bs-img="secretary.webp"
+                  data-bs-email="nchristine@gmail.com"
+                  data-bs-phone="+256796458349"
+                  data-bs-linkedin="https://linkedin.com/in/nchristine"
+                  data-bs-caption="Sr. Naturinda Christine - Board Secretary"
+                  data-bs-bio="Sr. Christine ensures smooth coordination and communication across school leadership. She plays a vital role in maintaining transparency and effective governance.">
+            Read Bio
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Treasurer -->
+    <div class="col-md-6 col-lg-4">
+      <div class="card shadow-sm h-100 text-center">
+        <img src="kent.webp" class="card-img-top" alt="Treasurer">
+        <div class="card-body">
+          <h5 class="card-title">Kent Rogers</h5>
+          <p class="card-text small">Treasurer</p>
+          <button class="btn btn-outline-primary btn-sm"
+                  data-bs-toggle="modal" data-bs-target="#lightboxModal"
+                  data-bs-img="kent.webp"
+                  data-bs-email="kent@yahoo.com"
+                  data-bs-phone="+1 938348238"
+                  data-bs-linkedin="https://linkedin.com/in/kent_rogers"
+                  data-bs-caption="Kent Rogers - Treasurer"
+                  data-bs-bio="Kent Rogers oversees financial planning and resource allocation. His dedication ensures Outreach SS remains sustainable and continues to invest in quality education.">
+            Read Bio
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Member -->
+    <div class="col-md-6 col-lg-4">
+      <div class="card shadow-sm h-100 text-center">
+        <img src="beth.jpg" class="card-img-top" alt="Board Member">
+        <div class="card-body">
+          <h5 class="card-title">Beth Rogers</h5>
+          <p class="card-text small">Board Member</p>
+          <button class="btn btn-outline-primary btn-sm"
+                  data-bs-toggle="modal" data-bs-target="#lightboxModal"
+                  data-bs-img="beth.jpg"
+                  data-bs-email="beth@oss.ac.ug"
+                  data-bs-phone="+1 348290330"
+                  data-bs-linkedin="https://linkedin.com/in/beth_rogers"
+                  data-bs-caption="Beth Rogers - Board Member"
+                  data-bs-bio="Beth Rogers contributes to strategic planning and community outreach, ensuring Outreach SS remains connected to its values and mission.">
+            Read Bio
+          </button>
+        </div>
+      </div>
+    </div>
+
+        <!-- Supervisor -->
+    <div class="col-md-6 col-lg-4">
+      <div class="card shadow-sm h-100 text-center">
+        <img src="supervisor.jpg" class="card-img-top" alt="Board Supervisor">
+        <div class="card-body">
+          <h5 class="card-title">Mr. Kasaazi G. William</h5>
+          <p class="card-text small">Board Supervisor (Operations)</p>
+          <button class="btn btn-outline-primary btn-sm"
+                  data-bs-toggle="modal" data-bs-target="#lightboxModal"
+                  data-bs-img="supervisor.jpg"
+                  data-bs-email="kasaazi.gw@gmail.com"
+                  data-bs-phone="+256756192296"
+                  data-bs-linkedin="https://www.bing.com/ck/a?!&&p=8328eae03148ad7af4643dc79dc136c08466f0ccca45cc6dc961c42d766dc723JmltdHM9MTc2MjgxOTIwMA&ptn=3&ver=2&hsh=4&fclid=20d421ff-b936-6bd3-3afd-3767b8b46a65&psq=kasaazi+George+William&u=a1aHR0cHM6Ly91Zy5saW5rZWRpbi5jb20vaW4va2FzYWF6aS1nZW9yZ2Utd2lsbGlhbQ"
+                  data-bs-caption="Mr. Kasaazi George William - Board Supervisor"
+                  data-bs-bio="Mr. Kasaazi George William oversees the operations of Outreach SS, ensuring that board decisions are implemented effectively and that the school runs smoothly day-to-day.">
+            Read Bio
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- Bio for Dr. Odama -->
+<div class="modal fade" id="bioOdama" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-dark text-white">
+        <h5 class="modal-title">Dr. Odama Modest Kayi - Chairperson</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p>
+          Dr. Odama has over 20 years of experience in education leadership,
+          guiding Outreach SS with a vision for inclusive learning and community growth.
+        </p>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <a href="mailto:modakayi@gmail.com" class="btn btn-outline-secondary btn-sm">
+          <i class="bi bi-envelope"></i> Email
+        </a>
+        <a href="tel:+256775430571" class="btn btn-outline-secondary btn-sm">
+          <i class="bi bi-telephone"></i> Call
+        </a>
+        <a href="https://www.bing.com/ck/a?!&&p=f9ffa6e968ae64d2116f546b52a1887dcb6df41d207be47886118658e8fd998bJmltdHM9MTc2MjgxOTIwMA&ptn=3&ver=2&hsh=4&fclid=20d421ff-b936-6bd3-3afd-3767b8b46a65&psq=odama+Modest+Kayi&u=a1aHR0cHM6Ly91Zy5saW5rZWRpbi5jb20vaW4vbW9kZXN0LW8tZGFtYS1rYXlpLTUzNDI1Njc1" target="_blank" class="btn btn-outline-secondary btn-sm">
+          <i class="bi bi-linkedin"></i> LinkedIn
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bio for Prof. Ashiraf -->
+<div class="modal fade" id="bioAshiraf" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-dark text-white">
+        <h5 class="modal-title">Prof. Ssemwogerere Ashiraf - Vice Chairperson</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p>
+          Prof. Ashiraf is one of the founding benefactors of Outreach SS.
+          His vision and support continue to shape the school's infrastructure and long-term strategy.
+        </p>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <a href="mailto:ashirafssemwogerere263@gmail.com" class="btn btn-outline-secondary btn-sm">
+          <i class="bi bi-envelope"></i> Email
+        </a>
+        <a href="tel:+256701422100" class="btn btn-outline-secondary btn-sm">
+          <i class="bi bi-telephone"></i> Call
+        </a>
+        <a href="https://www.bing.com/ck/a?!&&p=164ef1a22e976a1ee364d6aa345b22ddc32b456428b49ac2aaabc2e573c436a7JmltdHM9MTc2MjgxOTIwMA&ptn=3&ver=2&hsh=4&fclid=20d421ff-b936-6bd3-3afd-3767b8b46a65&psq=ssemwogerere+ashiraf&u=a1aHR0cHM6Ly91Zy5saW5rZWRpbi5jb20vaW4vc3NlbXdvZ2VyZXJlLWFzaGlyYWYtYjU5YjkyMzI1" target="_blank" class="btn btn-outline-secondary btn-sm">
+          <i class="bi bi-linkedin"></i> LinkedIn
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bio for Sr. Christine -->
+<div class="modal fade" id="bioChristine" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-dark text-white">
+        <h5 class="modal-title">Sr. Naturinda Christine - Board Secretary</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p>
+          Sr. Christine ensures smooth coordination and communication across school leadership.
+          She plays a vital role in maintaining transparency and effective governance.
+        </p>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <a href="mailto:nchristine@gmail.com" class="btn btn-outline-secondary btn-sm">
+          <i class="bi bi-envelope"></i> Email
+        </a>
+        <a href="tel:+256796458349" class="btn btn-outline-secondary btn-sm">
+          <i class="bi bi-telephone"></i> Call
+        </a>
+        <a href="https://linkedin.com/in/nchristine" target="_blank" class="btn btn-outline-secondary btn-sm">
+          <i class="bi bi-linkedin"></i> LinkedIn
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bio for Kent Rogers -->
+<div class="modal fade" id="bioKent" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-dark text-white">
+        <h5 class="modal-title">Kent Rogers - Treasurer</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p>
+          Kent Rogers oversees financial planning and resource allocation.
+          His dedication ensures Outreach SS remains sustainable and continues to invest in quality education.
+        </p>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <a href="mailto:kent@yahoo.com" class="btn btn-outline-secondary btn-sm">
+          <i class="bi bi-envelope"></i> Email
+        </a>
+        <a href="tel:+1 938348238" class="btn btn-outline-secondary btn-sm">
+          <i class="bi bi-telephone"></i> Call
+        </a>
+        <a href="https://linkedin.com/in/kent_rogers" target="_blank" class="btn btn-outline-secondary btn-sm">
+          <i class="bi bi-linkedin"></i> LinkedIn
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bio for Beth Rogers -->
+<div class="modal fade" id="bioBeth" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-dark text-white">
+        <h5 class="modal-title">Beth Rogers - Board Member</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p>
+          Beth Rogers contributes to strategic planning and community outreach,
+          ensuring Outreach SS remains connected to its values and mission.
+        </p>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <a href="mailto:beth@oss.ac.ug" class="btn btn-outline-secondary btn-sm">
+          <i class="bi bi-envelope"></i> Email
+        </a>
+        <a href="tel:+1 348290330" class="btn btn-outline-secondary btn-sm">
+          <i class="bi bi-telephone"></i> Call
+        </a>
+        <a href="https://linkedin.com/in/beth_rogers" target="_blank" class="btn btn-outline-secondary btn-sm">
+          <i class="bi bi-linkedin"></i> LinkedIn
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bio for Kasaazi -->
+ <!-- Bio for Mr. Kasaazi George William -->
+<div class="modal fade" id="bioKasaazi" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      
+      <!-- Header -->
+      <div class="modal-header bg-dark text-white">
+        <h5 class="modal-title">Mr. Kasaazi George William – Board Supervisor (Operations)</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      
+      <!-- Body -->
+      <div class="modal-body">
+        <p>
+          Mr. Kasaazi George William oversees the operations of Outreach SS, ensuring that board decisions 
+          are implemented effectively and that the school runs smoothly day-to-day. His leadership bridges 
+          strategic planning with practical execution, keeping the institution aligned with its mission.
+        </p>
+      </div>
+      
+      <!-- Footer with contact icons -->
+      <div class="modal-footer justify-content-center">
+        <a href="mailto:kasaazi.gw@gmail.com" class="btn btn-outline-secondary btn-sm">
+          <i class="bi bi-envelope"></i> Email
+        </a>
+        <a href="tel:+256756192296" class="btn btn-outline-secondary btn-sm">
+          <i class="bi bi-telephone"></i> Call
+        </a>
+        <a href="https://www.bing.com/ck/a?!&&p=8328eae03148ad7af4643dc79dc136c08466f0ccca45cc6dc961c42d766dc723JmltdHM9MTc2MjgxOTIwMA&ptn=3&ver=2&hsh=4&fclid=20d421ff-b936-6bd3-3afd-3767b8b46a65&psq=kasaazi+George+William&u=a1aHR0cHM6Ly91Zy5saW5rZWRpbi5jb20vaW4va2FzYWF6aS1nZW9yZ2Utd2lsbGlhbQ" target="_blank" class="btn btn-outline-secondary btn-sm">
+          <i class="bi bi-linkedin"></i> LinkedIn
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+  <div class="text-center mt-5">
+  <a href="board-roles.pdf" class="btn btn-outline-dark" download>
+    📄 Download Board Roles (PDF)
+  </a>
+</div>
+<!-- Administration -->
+<main class="container py-5">
+  <h2 class="text-center mb-5">School Administration</h2>
+  <div class="row g-4">
+
+    <!-- Headteacher -->
+    <div class="col-md-6 col-lg-4">
+      <div class="card shadow-sm h-100 text-center">
+        <img src="headteacher.jpg" class="card-img-top" alt="Headteacher">
+        <div class="card-body">
+          <h5 class="card-title">Mr. James Okello</h5>
+          <p class="card-text small">Headteacher</p>
+          <button class="btn btn-outline-primary btn-sm"
+                  data-bs-toggle="modal" data-bs-target="#lightboxModal"
+                  data-bs-img="headteacher.jpg"
+                  data-bs-caption="Mr. James Okello - Headteacher"
+                  data-bs-email="okello@oss.ac.ug"
+                  data-bs-phone="+256773267910"
+                  data-bs-linkedin="https://linkedin.com/in/j-okello"
+                  data-bs-bio="Mr. Okello has led Outreach SS for over a decade, focusing on academic excellence and holistic student development.">
+            Read Bio
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Deputy Headteacher -->
+    <div class="col-md-6 col-lg-4">
+      <div class="card shadow-sm h-100 text-center">
+        <img src="deputy.jpg" class="card-img-top" alt="Deputy Headteacher">
+        <div class="card-body">
+          <h5 class="card-title">Ms. Ruth Achen</h5>
+          <p class="card-text small">Deputy Headteacher</p>
+          <button class="btn btn-outline-primary btn-sm"
+                  data-bs-toggle="modal" data-bs-target="#lightboxModal"
+                  data-bs-img="deputy.jpg"
+                  data-bs-email="acheng.ruth@stud.oss.ac.ug"
+                  data-bs-phone="+256789009011"
+                  data-bs-linkedin="https://linkedin.com/in/ruth"
+                  data-bs-caption="Ms. Ruth Achen - Deputy Headteacher"
+                  data-bs-bio="Ms. Achen supports the Headteacher in daily operations and ensures smooth coordination of academic and extracurricular programs.">
+            Read Bio
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Academic Dean -->
+    <div class="col-md-6 col-lg-4">
+      <div class="card shadow-sm h-100 text-center">
+        <img src="dean.jpg" class="card-img-top" alt="Academic Dean">
+        <div class="card-body">
+          <h5 class="card-title">Dr. Samuel Kato</h5>
+          <p class="card-text small">Academic Dean</p>
+          <button class="btn btn-outline-primary btn-sm"
+                  data-bs-toggle="modal" data-bs-target="#lightboxModal"
+                  data-bs-img="dean.jpg"
+                  data-bs-email="skato@oss.ac.ug"
+                  data-bs-phone="+256704000711"
+                  data-bs-linkedin="https://linkedin.com/in/sam_kato"
+                  data-bs-caption="Dr. Samuel Kato - Academic Dean"
+                  data-bs-bio="Dr. Kato oversees curriculum development and academic standards, ensuring Outreach SS maintains excellence in teaching and learning.">
+            Read Bio
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Head Prefect -->
+    <div class="col-md-6 col-lg-4">
+      <div class="card shadow-sm h-100 text-center">
+        <img src="headprefect.jpg" class="card-img-top" alt="Head Prefect">
+        <div class="card-body">
+          <h5 class="card-title">Sarah Namutebi</h5>
+          <p class="card-text small">Head Prefect</p>
+          <button class="btn btn-outline-primary btn-sm"
+                  data-bs-toggle="modal" data-bs-target="#lightboxModal"
+                  data-bs-img="headprefect.jpg"
+                  data-bs-email="nsarah@stud.oss.ac.ug"
+                  data-bs-phone="+256790452013"
+                  data-bs-linkedin="https://linkedin.com/in/nsarah"
+                  data-bs-caption="Sarah Namutebi - Head Prefect"
+                  data-bs-bio="Sarah leads the student body, representing their voices and ensuring discipline and unity across the school.">
+            Read Bio
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Deputy Prefect -->
+    <div class="col-md-6 col-lg-4">
+      <div class="card shadow-sm h-100 text-center">
+        <img src="deputy headprefect.jpg" class="card-img-top" alt="Deputy Prefect">
+        <div class="card-body">
+          <h5 class="card-title">David Mugisha</h5>
+          <p class="card-text small">Deputy Head Prefect</p>
+          <button class="btn btn-outline-primary btn-sm"
+                  data-bs-toggle="modal" data-bs-target="#lightboxModal"
+                  data-bs-img="deputy headprefect.jpg"
+                  data-bs-email="david@stud.oss.ac.ug"
+                  data-bs-phone="+256756348214"
+                  data-bs-linkedin="https://linkedin.com/in/david"
+                  data-bs-caption="David Mugisha - Deputy Head Prefect"
+                  data-bs-bio="David assists the Head Prefect in maintaining discipline and coordinates student-led initiatives and activities.">
+            Read Bio
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sports Prefect -->
+    <div class="col-md-6 col-lg-4">
+      <div class="card shadow-sm h-100 text-center">
+        <img src="sports pre.jpg" class="card-img-top" alt="Sports Prefect">
+        <div class="card-body">
+          <h5 class="card-title">Grace Atwine</h5>
+          <p class="card-text small">Sports Prefect</p>
+          <button class="btn btn-outline-primary btn-sm"
+                  data-bs-toggle="modal" data-bs-target="#lightboxModal"
+                  data-bs-img="sports pre.jpg"
+                  data-bs-email="grace@stud.oss.ac.ug"
+                  data-bs-phone="+256777893015"
+                  data-bs-linkedin="https://linkedin.com/in/grace"
+                  data-bs-caption="Grace Atwine - Sports Prefect"
+                  data-bs-bio="Grace promotes sports and physical activities, encouraging teamwork and healthy competition among students.">
+            Read Bio
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- Bio of Admins -->
+<!-- Headteacher -->
+<div class="modal fade" id="bioOkello" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-dark text-white">
+        <h5 class="modal-title">Mr. James Okello - Headteacher</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p>Mr. Okello has led Outreach SS for over a decade, focusing on academic excellence and holistic student development.</p>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <a href="mailto:okello@oss.ac.ug" class="btn btn-outline-secondary btn-sm"><i class="bi bi-envelope"></i> Email</a>
+        <a href="tel:+256773267910" class="btn btn-outline-secondary btn-sm"><i class="bi bi-telephone"></i> Call</a>
+        <a href="https://linkedin.com/in/j-okello" target="_blank" class="btn btn-outline-secondary btn-sm"><i class="bi bi-linkedin"></i> LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Deputy Headteacher -->
+<div class="modal fade" id="bioRuth" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-dark text-white">
+        <h5 class="modal-title">Ms. Ruth Achen - Deputy Headteacher</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p>Ms. Achen supports the Headteacher in daily operations and ensures smooth coordination of academic and extracurricular programs.</p>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <a href="mailto:acheng.ruth@stud.oss.ac.ug" class="btn btn-outline-secondary btn-sm"><i class="bi bi-envelope"></i> Email</a>
+        <a href="tel:+256789009011" class="btn btn-outline-secondary btn-sm"><i class="bi bi-telephone"></i> Call</a>
+        <a href="https://linkedin.com/in/ruth" target="_blank" class="btn btn-outline-secondary btn-sm"><i class="bi bi-linkedin"></i> LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Academic Dean -->
+<div class="modal fade" id="bioKato" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-dark text-white">
+        <h5 class="modal-title">Dr. Samuel Kato - Academic Dean</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p>Dr. Kato oversees curriculum development and academic standards, ensuring Outreach SS maintains excellence in teaching and learning.</p>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <a href="mailto:skato@oss.ac.ug" class="btn btn-outline-secondary btn-sm"><i class="bi bi-envelope"></i> Email</a>
+        <a href="tel:+256704000711" class="btn btn-outline-secondary btn-sm"><i class="bi bi-telephone"></i> Call</a>
+        <a href="https://linkedin.com/in/sam_kato" target="_blank" class="btn btn-outline-secondary btn-sm"><i class="bi bi-linkedin"></i> LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Head Prefect -->
+<div class="modal fade" id="bioSarah" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-dark text-white">
+        <h5 class="modal-title">Sarah Namutebi - Head Prefect</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p>Sarah leads the student body, representing their voices and ensuring discipline and unity across the school.</p>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <a href="mailto:nsarah@stud.oss.ac.ug" class="btn btn-outline-secondary btn-sm"><i class="bi bi-envelope"></i> Email</a>
+        <a href="tel:+256790452013" class="btn btn-outline-secondary btn-sm"><i class="bi bi-telephone"></i> Call</a>
+        <a href="https://linkedin.com/in/nsarah" target="_blank" class="btn btn-outline-secondary btn-sm"><i class="bi bi-linkedin"></i> LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Deputy Prefect -->
+<div class="modal fade" id="bioDavid" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-dark text-white">
+        <h5 class="modal-title">David Mugisha - Deputy Prefect</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p>David assists the Head Prefect in maintaining discipline and coordinates student-led initiatives and activities.</p>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <a href="mailto:david@stud.oss.ac.ug" class="btn btn-outline-secondary btn-sm"><i class="bi bi-envelope"></i> Email</a>
+        <a href="tel:+256756348214" class="btn btn-outline-secondary btn-sm"><i class="bi bi-telephone"></i> Call</a>
+        <a href="https://linkedin.com/in/david" target="_blank" class="btn btn-outline-secondary btn-sm"><i class="bi bi-linkedin"></i> LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Sports Prefect -->
+<div class="modal fade" id="bioGrace" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-dark text-white">
+        <h5 class="modal-title">Grace Atwine – Sports Prefect</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p>Grace promotes sports and physical activities, encouraging teamwork and healthy competition among students.</p>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <a href="mailto:grace@stud.oss.ac.ug" class="btn btn-outline-secondary btn-sm"><i class="bi bi-envelope"></i> Email</a>
+        <a href="tel:+256777893015" class="btn btn-outline-secondary btn-sm"><i class="bi bi-telephone"></i> Call</a>
+        <a href="https://linkedin.com/in/grace" target="_blank" class="btn btn-outline-secondary btn-sm"><i class="bi bi-linkedin"></i> LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Lightbox Modal -->
+<div class="modal fade" id="lightboxModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-dark text-white">
+        <h5 class="modal-title" id="lightboxCaption">Member Bio</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body text-center">
+        <img id="lightboxImage" src="" alt="Member" class="img-fluid rounded mb-3">
+        <p id="lightboxBio"></p>
+      </div>
+      <div class="modal-footer justify-content-between">
+        <div id="lightboxContacts" class="d-flex gap-2">
+          <!-- Contact buttons will be injected here -->
+        </div>
+        <div>
+          <a href="#" id="prevArrow" class="btn btn-outline-secondary"><i class="bi bi-arrow-left"></i> Prev</a>
+          <a href="#" id="nextArrow" class="btn btn-outline-secondary">Next <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+     <!-- Footer -->
+  <footer class="site-footer bg-light text-center py-3 small text-muted">
+    <div class="container">
+      <p class="mb-1"><strong>Contact Us</strong></p>
+      <p class="mb-1">Headteacher: <br>Mr. Okello James - +256773267910</p>
+      <p class="mb-1">Deputy Headteacher: <br>Ms. Ruth Achen - +256789009011</p>
+      <p class="mb-1">Director of Studies: <br>Mr. Kato Emmanuel - +256784456789</p>
+      <p class="mb-1">&copy; 2025 Outreach Secondary School. All rights reserved.</p>
+      <p class="mb-0">Email: <a href="mailto:info@outreachschool.org">info@outreachschool.org</a> | Location: Baggala, Mpigi District, Uganda</p>
+    </div>
+  </footer>
+
+ <button id="backToTop" class="btn btn-warning back-to-top" aria-label="Back to top">⬆ Top</button>
+
+<script>
+     // Nav toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navOverlay = document.getElementById('navOverlay');
+    const navClose = document.getElementById('navClose');
+    function openMenu(){
+      navOverlay.classList.remove('d-none');
+      navOverlay.setAttribute('aria-hidden','false');
+      if(menuToggle) menuToggle.setAttribute('aria-expanded','true');
+      if(navClose) navClose.focus();
+    }
+    function closeMenu(){
+      navOverlay.classList.add('d-none');
+      navOverlay.setAttribute('aria-hidden','true');
+      if(menuToggle) menuToggle.setAttribute('aria-expanded','false');
+      if(menuToggle) menuToggle.focus();
+    }
+    if(menuToggle) menuToggle.addEventListener('click', openMenu);
+    if(navClose) navClose.addEventListener('click', closeMenu);
+    window.closeMenu = closeMenu;
+
+    // Back-to-top visibility
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 250) backToTop.classList.add('visible');
+      else backToTop.classList.remove('visible');
+    });
+    backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    
+  const galleryItems = document.querySelectorAll('[data-bs-toggle="modal"][data-bs-target="#lightboxModal"]');
+  let currentIndex = 0;
+
+  const lightboxModal = document.getElementById('lightboxModal');
+  const modalImg = document.getElementById('lightboxImage');
+  const modalCaption = document.getElementById('lightboxCaption');
+  const modalBio = document.getElementById('lightboxBio');
+  const modalContacts = document.getElementById('lightboxContacts');
+
+  // Show modal with clicked member
+  lightboxModal.addEventListener('show.bs.modal', function (event) {
+    const trigger = event.relatedTarget;
+    currentIndex = Array.from(galleryItems).indexOf(trigger);
+    updateModal(trigger);
+  });
+
+  function updateModal(trigger) {
+    modalImg.src = trigger.getAttribute('data-bs-img');
+    modalCaption.textContent = trigger.getAttribute('data-bs-caption');
+    modalBio.textContent = trigger.getAttribute('data-bs-bio');
+
+    // Build contact buttons dynamically
+    modalContacts.innerHTML = '';
+    const email = trigger.getAttribute('data-bs-email');
+    const phone = trigger.getAttribute('data-bs-phone');
+    const linkedin = trigger.getAttribute('data-bs-linkedin');
+
+    if (email) {
+      modalContacts.innerHTML += `<a href="mailto:${email}" class="btn btn-outline-secondary btn-sm"><i class="bi bi-envelope"></i> Email</a>`;
+    }
+    if (phone) {
+      modalContacts.innerHTML += `<a href="tel:${phone}" class="btn btn-outline-secondary btn-sm"><i class="bi bi-telephone"></i> Call</a>`;
+    }
+    if (linkedin) {
+      modalContacts.innerHTML += `<a href="${linkedin}" target="_blank" class="btn btn-outline-secondary btn-sm"><i class="bi bi-linkedin"></i> LinkedIn</a>`;
+    }
+  }
+
+  // Next arrow
+  document.getElementById('nextArrow').addEventListener('click', function (e) {
+    e.preventDefault();
+    currentIndex = (currentIndex + 1) % galleryItems.length;
+    updateModal(galleryItems[currentIndex]);
+  });
+
+  // Previous arrow
+  document.getElementById('prevArrow').addEventListener('click', function (e) {
+    e.preventDefault();
+    currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+    updateModal(galleryItems[currentIndex]);
+  });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', function (e) {
+    if (!lightboxModal.classList.contains('show')) return;
+    if (e.key === 'ArrowRight') {
+      currentIndex = (currentIndex + 1) % galleryItems.length;
+      updateModal(galleryItems[currentIndex]);
+    }
+    if (e.key === 'ArrowLeft') {
+      currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+      updateModal(galleryItems[currentIndex]);
+    }
+  });
+</script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+   <script src="script.js" defer></script>
+</body>
+</html>

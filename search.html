@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Search Results - Outreach SS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="icon" type="/image/x-icon" href="favicon-32x32.png">
+ <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-image:url('School_Administration_block.jpg');
+    color: #0404ff;
+    text-shadow: #0404ff 1px 1px 2px;
+    line-height: 1.5;
+    font-size: clamp(15px, 1rem + 0.4vw, 18px);
+    margin: 0;
+    padding-bottom: 4rem;
+  }
+</style>
+<body>
+<section style="background-color: rgba(0, 0, 0, 0.568);">
+  <div class="container py-5">
+    <h2 class="mb-4">Search Results</h2>
+    <div id="resultsContainer" class="list-group"></div>
+  </div>
+  <br><br><br><br><br>
+
+  <!-- Footer -->
+  <footer class="bg-light text-center py-3 small text-muted">
+    &copy; 2025 Outreach Secondary School. All rights reserved.
+    <p>Email: info@outreachschool.org | Tel: +256 701 422 100</p>
+    <p>Location: Baggala, Central Uganda</p>
+  </footer>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const query = params.get('q');
+    const results = [
+      { title: "Admissions", url: "admissions.html", text: "Join our inclusive learning community." },
+      { title: "Gallery", url: "gallery.html", text: "Photos from school events and projects." },
+      { title: "Contact", url: "contact.html", text: "Reach out to us with questions or feedback." },
+      { title: "Academics", url: "academics.html", text: "Subjects and vocational training offered at Outreach Secondary School." },
+      { title: "News", url: "news.html", text: "Latest updates and announcements from Outreach SS." },
+      { title: "About Us", url: "about.html", text: "Learn more about Outreach Secondary School's mission and values." },
+      { title: "School Rules", url: "rules.html", text: "Guidelines to ensure a safe and productive environment." },
+      { title: "Home", url: "index.html", text: "Welcome to Outreach Secondary School." },
+      { title: "Admin Panel", url: "admin.html", text: "Manage news posts and school content." },
+      { title: "Applications", url: "admissions-wizzard.html", text: "Start your application process online." },
+      { title: "News Post: Science Fair", url: "news.html#science-fair", text: "Highlights from our recent science fair event." },
+      { title: "News Post: Sports Day", url: "news.html#sports-day", text: "Recap of the annual sports day activities." },
+      { title: "News Post: New Library", url: "news.html#new-library", text: "Announcement of the opening of our new library facility." },
+      { title: "Teacher Training Program", url: "news.html#teacher-training", text: "Details about the recent ICT training for our teachers." },
+      { title: "Infrastructure Update", url: "news.html#infrastructure-update", text: "Progress on the new dormitory construction project." },
+      { title: "Contact Headteacher", url: "contact.html#headteacher", text: "Get in touch with Mr. Okello James." },
+      { title: "Contact Deputy Headteacher", url: "contact.html#deputy-headteacher", text: "Get in touch with Ms. Ruth Achen." },
+      { title: "Contact Director of Studies", url: "contact.html#director-of-studies", text: "Get in touch with Mr. Kato Emmanuel." },
+      { title: "Uniform Policy", url: "rules.html#uniform-policy", text: "Details on the school's uniform requirements." },
+      { title: "Code of Conduct", url: "rules.html#code-of-conduct", text: "Expectations for student behavior and discipline." },
+      { title: "ICT Curriculum", url: "academics.html#ict-curriculum", text: "Overview of the ICT and Computer Studies program."},
+      { title: "Science Subjects", url: "academics.html#science-subjects", text: "Information on Biology, Chemistry, and Physics courses." },
+      { title: "Mathematics Program", url: "academics.html#mathematics-program", text: "Details about the Mathematics curriculum offered." },
+      { title: "School Board", url: "board.html", text: "Meet the members of the Outreach Secondary School Board." }
+    ];
+
+    const container = document.getElementById('resultsContainer');
+    const matches = results.filter(r => r.title.toLowerCase().includes(query.toLowerCase()) || r.text.toLowerCase().includes(query.toLowerCase()));
+
+    if (matches.length === 0) {
+      container.innerHTML = '<p class="text-muted">No results found for "' + query + '".</p>';
+    } else {
+      matches.forEach(r => {
+        container.innerHTML += `<a href="${r.url}" class="list-group-item list-group-item-action"><strong>${r.title}</strong><br>${r.text}</a>`;
+      });
+    }
+    
+  </script>
+  </section>
+</body>
+</html>

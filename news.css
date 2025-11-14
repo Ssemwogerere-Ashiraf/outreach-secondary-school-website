@@ -1,0 +1,12 @@
+/* News & Events styles */
+.news-grid{display:grid;grid-template-columns:1fr 320px;gap:18px;align-items:start}
+@media(max-width:980px){.news-grid{grid-template-columns:1fr}}
+.news-main .post{background:#fff;padding:16px;border-radius:10px;margin-bottom:12px;box-shadow:0 6px 18px rgba(0,0,0,0.03)}
+.post h2{margin:0 0 6px;color:var(--primary)}
+.post .meta{font-size:13px;color:var(--muted);margin-bottom:8px}
+.post .excerpt{color:#222}
+.post .read-more{display:inline-block;margin-top:8px}
+.event-list{list-style:none;padding:0;margin:0}
+.event-list li{padding:8px 0;border-bottom:1px dashed #eee;font-size:14px}
+.event-date{font-weight:700;color:var(--primary);margin-right:8px}
+.no-posts{color:var(--muted);padding:12px;background:#fff;border-radius:8px}

@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Admissions Wizard — Outreach SS</title>
+  <meta name="description" content="Three-step admissions form for Outreach Secondary School" />
+  <link rel="icon" type="image/x-icon" href="favicon-32x32.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+  <style>
+    :root{
+      --brand:#b71c1c;
+      --accent:#f7c900;
+      --max-width:900px;
+      --radius:10px;
+    }
+    html,body{height:100%;margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial;}
+    body{background:#fff;color:#222;line-height:1.45;}
+
+    /* Header */
+    .site-header{background:linear-gradient(90deg,var(--accent),#f2b600);padding:.75rem 0;}
+    .brand{font-weight:800;color:var(--brand);letter-spacing:.02em;}
+
+    /* Page title */
+    .page-title{padding:2.25rem 1rem;text-align:center;}
+
+    .container-main{max-width:var(--max-width);margin:0 auto;padding:1rem;width:100%;}
+
+    /* Wizard card */
+    .wizard-card{background:#fff;border:1px solid #fde8b0;border-radius:var(--radius);padding:1.25rem;margin:0 auto;box-shadow:0 8px 30px rgba(0,0,0,0.06);}
+    .step{display:none;}
+    .step.active{display:block;}
+    .progress-labels{display:flex;justify-content:space-between;font-size:.9rem;margin-top:.5rem;color:#555;}
+    .progress-bar-wrap{background:#eee;border-radius:999px;overflow:hidden;height:12px;}
+    .progress-bar-inner{height:100%;background:linear-gradient(90deg,#4caf50,#2e7d32);width:0%;}
+
+    /* Buttons */
+    .btn-primary, .btn-success { border-radius:8px; font-weight:600; }
+    .btn-secondary { border-radius:8px; }
+
+    /* Form fields */
+    label{font-weight:600;}
+    input.form-control, select.form-select, textarea.form-control { border-radius:8px; }
+
+    /* Confirmation */
+    #confirmation{display:none;margin-top:1rem;}
+
+    /* Responsive layout tweaks */
+    @media (min-width:768px){
+      .wizard-grid{display:grid;grid-template-columns:1fr 320px;gap:1rem;align-items:start;}
+    }
+
+    /* Accessible focus */
+    a:focus, button:focus, input:focus, select:focus, textarea:focus { outline:3px solid rgba(183,28,28,0.12); outline-offset:3px; border-radius:6px; }
+
+    /* Nav overlay (mobile) */
+    .nav-overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.55);z-index:1200}
+    .nav-panel{background:#fff;padding:1rem;border-radius:10px;width:min(92%,380px);box-shadow:0 12px 30px rgba(0,0,0,0.12)}
+    .nav-panel a{display:block;padding:.6rem 0;color:var(--brand);font-weight:700;text-decoration:none;border-bottom:1px solid #f2f2f2}
+
+    /* Back-to-top button */
+    .back-to-top {
+      position: fixed;
+      right: 1rem;
+      bottom: 1rem;
+      z-index: 1200;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      background: linear-gradient(180deg,#f7c900,#f2b600);
+      color: #111;
+      box-shadow: 0 8px 20px rgba(11,24,38,0.12);
+      border: none;
+      cursor: pointer;
+      transition: transform .18s ease, opacity .18s ease;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .back-to-top.visible { opacity: 1; pointer-events: auto; }
+    .back-to-top:hover { transform: translateY(-3px); }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header bg-light shadow-sm" role="banner">
+    <div class="container d-flex align-items-center justify-content-between py-2">
+      <div class="d-flex align-items-center gap-2">
+        <img src="logo.png" alt="Outreach logo" style="width:56px;height:56px;border-radius:8px;object-fit:cover">
+        <span class="fw-bold text-danger">OUTREACH SECONDARY SCHOOL</span>
+      </div>
+
+      <!-- Desktop nav -->
+      <nav class="d-none d-md-flex gap-3">
+        <a href="index.html" class="text-dark fw-semibold">Home</a>
+        <a href="about.html" class="text-dark fw-semibold">About</a>
+        <a href="news.html" class="text-dark fw-semibold">News</a>
+        <a href="contact.html" class="text-dark fw-semibold">Contact</a>
+      </nav>
+
+      <!-- Mobile toggle -->
+      <button id="menuToggle" class="btn btn-sm btn-outline-dark d-md-none" aria-controls="navOverlay" aria-expanded="false" aria-label="Open menu">
+        Menu
+      </button>
+   </div>
+     <form class="mt-3" style="padding-right: 150px; padding-left: 150px;" action="search.html" method="GET" role="search">
+    <input name="q" type="search" class="form-control form-control-sm" placeholder="Search site..." />
+  </form>
+
+    <!-- Mobile nav overlay -->
+    <div id="navOverlay" class="d-none nav-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="nav-panel" role="document">
+        <button id="navClose" class="btn btn-sm btn-outline-secondary mb-3">Close</button>
+        <nav aria-label="Primary">
+          <a href="index.html" onclick="closeMenu()">Home</a>
+          <a href="news.html" onclick="closeMenu()">News</a>
+          <a href="gallery.html" onclick="closeMenu()">Gallery</a>
+          <a href="contact.html" onclick="closeMenu()">Contact</a>
+          <a href="admissions.html" onclick="closeMenu()">Admissions</a>
+          <a href="rules.html" onclick="closeMenu()">Rules & Regulations</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Title -->
+  <section class="page-title">
+    <div class="container container-main">
+      <h1 style="color:rgb(255,64,0);margin:0;font-size:1.6rem">Admission Form</h1>
+      <p class="lead mb-0" style="color:rebeccapurple">Apply to Outreach SS in three easy steps</p>
+    </div>
+  </section>
+
+  <!-- Wizard -->
+  <main class="container-main" role="main">
+    <div class="wizard-grid">
+      <div class="wizard-card" aria-labelledby="wizardHeading">
+
+        <h2 id="wizardHeading" class="h5 mb-3">Application Wizard</h2>
+
+        <!-- Progress -->
+        <div class="mb-3">
+          <div class="progress-bar-wrap" aria-hidden="true">
+            <div id="progressBar" class="progress-bar-inner" style="width:33%"></div>
+          </div>
+          <div class="progress-labels" aria-hidden="true">
+            <span>Personal</span><span>Academic</span><span>Guardian</span>
+          </div>
+        </div>
+
+        <form id="wizardForm" action="https://formspree.io/f/mzzybkeo" method="POST" novalidate>
+          <!-- Hidden fields -->
+          <input type="hidden" name="_subject" value="New Admission Application - Outreach SS">
+          <input type="hidden" name="_replyto" value="ssemwogerere.ashiraf@stud.umu.ac.ug">
+          <input type="hidden" name="_autoresponse" value="Thank you for applying to Outreach Secondary School. We have received your application and will contact you soon.">
+          <input type="hidden" name="_redirect" value="thank-you.html">
+
+          <!-- Step 1 -->
+          <section class="step active" data-step="1" aria-label="Step 1: Personal Information">
+            <h3 class="h6">Step 1: Personal Information</h3>
+            <div class="mb-3">
+              <label for="fullName">Full Name</label>
+              <input id="fullName" name="fullName" type="text" class="form-control" required autocomplete="name" />
+            </div>
+            <div class="mb-3">
+              <label for="dob">Date of Birth</label>
+              <input id="dob" name="dob" type="date" class="form-control" required />
+            </div>
+            <div class="mb-3">
+              <label for="email">Email Address</label>
+              <input id="email" name="email" type="email" class="form-control" required autocomplete="email" />
+            </div>
+
+            <div class="d-flex gap-2 justify-content-end">
+              <button type="button" class="btn btn-primary" id="nextBtn1">Next</button>
+            </div>
+          </section>
+
+          <!-- Step 2 -->
+          <section class="step" data-step="2" aria-label="Step 2: Academic Background">
+            <h3 class="h6">Step 2: Academic Background</h3>
+            <div class="mb-3">
+              <label for="lastSchool">Last School Attended</label>
+              <input id="lastSchool" name="lastSchool" type="text" class="form-control" required />
+            </div>
+            <div class="mb-3">
+              <label for="examType">Exam Type</label>
+              <select id="examType" name="examType" class="form-select" required>
+                <option value="" disabled selected>Select exam type</option>
+                <option value="PLE">PLE</option>
+                <option value="UCE">UCE</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="examDetails">Exam Index Number / Grades</label>
+              <textarea id="examDetails" name="examDetails" class="form-control" rows="3" required placeholder="Enter index number and grades"></textarea>
+            </div>
+
+            <div class="d-flex gap-2 justify-content-between">
+              <button type="button" class="btn btn-secondary" id="backBtn2">Back</button>
+              <button type="button" class="btn btn-primary" id="nextBtn2">Next</button>
+            </div>
+          </section>
+
+          <!-- Step 3 -->
+          <section class="step" data-step="3" aria-label="Step 3: Guardian Details">
+            <h3 class="h6">Step 3: Parent / Guardian Details</h3>
+            <div class="mb-3">
+              <label for="guardianName">Guardian Name</label>
+              <input id="guardianName" name="guardianName" type="text" class="form-control" required />
+            </div>
+            <div class="mb-3">
+              <label for="guardianPhone">Phone Number</label>
+              <input id="guardianPhone" name="guardianPhone" type="tel" class="form-control" required />
+            </div>
+
+            <div class="d-flex gap-2 justify-content-between">
+              <button type="button" class="btn btn-secondary" id="backBtn3">Back</button>
+              <button type="submit" class="btn btn-success" id="submitBtn">Submit Application</button>
+            </div>
+          </section>
+        </form>
+
+        <div id="confirmation" class="alert alert-success mt-3" role="status" aria-live="polite">
+          ✅ Thank you! Your application has been submitted successfully.
+        </div>
+
+      </div>
+
+      <!-- Right column: instructions or summary -->
+      <aside class="p-3">
+        <div class="card" style="border-radius:var(--radius);box-shadow:0 8px 20px rgba(0,0,0,0.04);">
+          <div class="card-body">
+            <h4 class="h6 mb-2">Before you start</h4>
+            <p class="small mb-2">You will need the applicant's full name, date of birth, previous school details and guardian contact. The form will be submitted securely to our application processor.</p>
+            <h5 class="h6 mt-3 mb-1">Progress</h5>
+            <ol class="small mb-0">
+              <li>Personal information</li>
+              <li>Academic background</li>
+              <li>Guardian contact and submit</li>
+            </ol>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer bg-light text-center py-3 small text-muted">
+    <div class="container">
+      <p class="mb-1"><strong>Contact Us</strong></p>
+      <p class="mb-1">Headteacher: <br>Mr. Okello James - +256773267910</p>
+      <p class="mb-1">Deputy Headteacher: <br>Ms. Ruth Achen - +256789009011</p>
+      <p class="mb-1">Director of Studies: <br>Mr. Kato Emmanuel - +256784456789</p>
+      <p class="mb-1">&copy; 2025 Outreach Secondary School. All rights reserved.</p>
+      <p class="mb-0">Email: <a href="mailto:info@outreachschool.org">info@outreachschool.org</a> | Location: Baggala, Mpigi District, Uganda</p>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button id="backToTop" class="btn btn-warning back-to-top" aria-label="Back to top">⬆ Top</button>
+
+  <!-- Scripts -->
+  <script>
+    (function(){
+      const steps = Array.from(document.querySelectorAll('.step'));
+      const progressBar = document.getElementById('progressBar');
+      const form = document.getElementById('wizardForm');
+      const confirmation = document.getElementById('confirmation');
+      let current = 0;
+
+      // Helpers
+      function show(index){
+        steps.forEach((s,i) => s.classList.toggle('active', i === index));
+        progressBar.style.width = ((indexFraction(index) ) * 100) + '%';
+        // focus first input in step
+        const first = steps[index].querySelector('input, select, textarea, button');
+        if(first) first.focus();
+      }
+
+      function indexFraction(i){
+        // When at step 0 (first) show 33%, step1 => 66%, step2 => 100%
+        const total = steps.length;
+        return (i + 1) / total;
+      }
+
+      function validateStep(i){
+        const inputs = Array.from(steps[i].querySelectorAll('input, select, textarea'));
+        for (const input of inputs){
+          // Skip validation for inputs that are not required
+          if (!input.hasAttribute('required')) continue;
+          if (!input.checkValidity()){
+            input.classList.add('is-invalid');
+            input.focus();
+            input.reportValidity();
+            return false;
+          } else {
+            input.classList.remove('is-invalid');
+          }
+        }
+        return true;
+      }
+
+      // Initial
+      show(current);
+
+      // Buttons
+      document.getElementById('nextBtn1').addEventListener('click', () => {
+        if (!validateStep(0)) return;
+        current = 1;
+        show(current);
+      });
+
+      document.getElementById('nextBtn2').addEventListener('click', () => {
+        if (!validateStep(1)) return;
+        current = 2;
+        show(current);
+      });
+
+      document.getElementById('backBtn2').addEventListener('click', () => {
+        current = 0; show(current);
+      });
+
+      document.getElementById('backBtn3').addEventListener('click', () => {
+        current = 1; show(current);
+      });
+
+      // Keyboard: allow Enter to move forward when not on submit
+      form.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter'){
+          // Prevent accidental submit on Enter when within multi-step (except on textarea)
+          if (document.activeElement && document.activeElement.tagName !== 'TEXTAREA'){
+            e.preventDefault();
+            if (!validateStep(current)) return;
+            if (current < steps.length - 1) { current++; show(current); }
+            else { /* let normal submit happen */ }
+          }
+        }
+      });
+
+      // Submit handler (AJAX + fallback)
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        if (!validateStep(current)) return;
+
+        const ok = confirm("Is the information you've provided clear and relevant?");
+        if (!ok) return;
+
+        const data = new FormData(form);
+        const action = form.action;
+
+        fetch(action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        }).then(response => {
+          if (response.ok) {
+            confirmation.style.display = 'block';
+            form.reset();
+            current = 0;
+            show(current);
+            setTimeout(()=> window.location.href = 'thank-you.html', 1000);
+          } else {
+            return response.json().then(err => { throw err; });
+          }
+        }).catch(err => {
+          // fallback: native submit
+          try {
+            const native = document.createElement('form');
+            native.action = action;
+            native.method = 'POST';
+            native.style.display = 'none';
+            for (const [name, value] of data.entries()){
+              const inp = document.createElement('input');
+              inp.type = 'hidden';
+              inp.name = name;
+              inp.value = value;
+              native.appendChild(inp);
+            }
+            document.body.appendChild(native);
+            native.submit();
+          } catch (e){
+            alert('There was a problem submitting your application. Please try again later.');
+            console.error(e);
+          }
+        });
+      });
+
+    })();
+
+    // Mobile nav toggle with accessibility
+    const menuToggle = document.getElementById('menuToggle');
+    const navOverlay = document.getElementById('navOverlay');
+    const navClose = document.getElementById('navClose');
+    const backToTop = document.getElementById('backToTop');
+
+    function openMenu(){
+      navOverlay.classList.remove('d-none');
+      navOverlay.setAttribute('aria-hidden','false');
+      if(menuToggle) menuToggle.setAttribute('aria-expanded','true');
+      if(navClose) navClose.focus();
+    }
+    function closeMenu(){
+      navOverlay.classList.add('d-none');
+      navOverlay.setAttribute('aria-hidden','true');
+      if(menuToggle) menuToggle.setAttribute('aria-expanded','false');
+      if(menuToggle) menuToggle.focus();
+    }
+    if(menuToggle) menuToggle.addEventListener('click', openMenu);
+    if(navClose) navClose.addEventListener('click', closeMenu);
+    window.closeMenu = closeMenu;
+
+    // Back to top visibility
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 250) backToTop.classList.add('visible');
+      else backToTop.classList.remove('visible');
+    });
+    backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Keyboard: close nav overlay with Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !navOverlay.classList.contains('d-none')) closeMenu();
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+</body>
+</html>

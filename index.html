@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Outreach Secondary School - Admissions, News, Gallery, Contact" />
+  <meta name="keywords" content="Outreach SS, Uganda, secondary school, education, Nkozi" />
+  <title>Outreach Secondary School</title>
+
+  <!-- Replace or keep Bootstrap as needed -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
+  <!-- Main responsive stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <link rel="icon" type="image/x-icon" href="favicon-32x32.png" />
+</head>
+<body>
+  <!-- Preloader -->
+  <div id="preloader" class="preloader d-flex flex-column justify-content-center align-items-center">
+    <div class="overlay-text text-center">
+      <h2 id="loadingMessage">Loading...</h2>
+    </div>
+    <div class="spinner-border text-light mt-3" role="status" aria-hidden="true"></div>
+    <span class="visually-hidden">Loading...</span>
+  </div>
+
+  <header class="site-header container-fluid bg-primary text-white">
+    <div class="container d-flex gap-3 align-items-center py-2">
+      <img src="logo.png" alt="Outreach Logo" class="logo" />
+      <div class="site-title">
+        <strong class="brand">
+          <span class="brand-accent">O</span>UTREACH <span class="brand-accent">S</span>ECONDARY <span class="brand-accent">S</span>CHOOL
+        </strong>
+      </div>
+
+      <button class="btn btn-outline-light ms-auto d-md-none" id="menuToggle" aria-expanded="false" aria-controls="navOverlay" aria-label="Open navigation">Menu</button>
+
+      <form class="d-none d-md-block ms-3" action="search.html" method="GET" role="search" aria-label="Site search">
+        <input id="siteSearch" name="q" type="search" class="form-control form-control-sm" placeholder="Search site..." />
+      </form>
+    </div>
+
+    <!-- Nav overlay (mobile) -->
+    <div id="navOverlay" class="nav-overlay d-none" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="nav-panel">
+        <button class="nav-close" id="navClose" aria-label="Close menu">Close</button>
+        <nav>
+          <a href="index.html" class="nav-link" onclick="closeMenu()">Home</a>
+          <a href="news.html" class="nav-link" onclick="closeMenu()">News</a>
+          <a href="gallery.html" class="nav-link" onclick="closeMenu()">Gallery</a>
+          <a href="contact.html" class="nav-link" onclick="closeMenu()">Contact</a>
+          <a href="admissions.html" class="nav-link" onclick="closeMenu()">Admissions</a>
+        </nav>
+        <form class="mt-3" action="search.html" method="GET" role="search">
+          <input name="q" type="search" class="form-control form-control-sm" placeholder="Search site..." />
+        </form>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero carousel -->
+  <main>
+    <section class="hero-section position-relative">
+      <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="6000">
+        <div class="carousel-inner">
+          <div class="carousel-item active hero-item" style="background-image:url('School_Administration_block.jpg')">
+            <div class="hero-content container text-center text-white">
+              <h1 class="display-5 fw-bold">Welcome to Outreach Secondary School</h1>
+              <p class="lead">We are delighted to have you join our vibrant learning community</p>
+              <a href="admissions.html" class="btn btn-warning btn-lg">Apply Now</a>
+            </div>
+          </div>
+
+          <div class="carousel-item hero-item" style="background-image:url('ICT.jpg')">
+            <div class="hero-content container text-center text-white">
+              <h1 class="display-5 fw-bold">Practical Skills for Real Life</h1>
+              <p class="lead">ICT, vocational training, and community engagement</p>
+              <a href="about.html" class="btn btn-warning btn-lg">Learn More</a>
+            </div>
+          </div>
+
+          <div class="carousel-item hero-item" style="background-image:url('hero3.jpeg')">
+            <div class="hero-content container text-center text-white">
+              <h1 class="display-5 fw-bold">Inclusive Education for All</h1>
+              <p class="lead">Supporting learners with disabilities and diverse needs</p>
+              <a href="academics.html" class="btn btn-warning btn-lg">Get Involved</a>
+            </div>
+          </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev" aria-label="Previous slide">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next" aria-label="Next slide">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Info card and About -->
+    <section class="container my-4">
+      <div class="row g-3">
+        <div class="col-12 col-md-4">
+          <div class="card info-card">
+            <div class="card-body">
+              <strong>Opening in</strong>
+              <div id="countdown" class="mt-2 text-warning">Loading...</div>
+            </div>
+          </div>
+
+          <div class="card mt-3 contact-card">
+            <div class="card-body">
+              <h3 class="h6 mb-2">Contact</h3>
+              <p class="mb-1 fw-semibold">Mr. Okello James - +256773267910</p>
+              <p class="mb-1">Email: <a href="mailto:info@outreachschool.org">info@outreachschool.org</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-8">
+          <article class="card h-100">
+            <div class="card-body">
+              <h3>About Outreach Secondary School</h3>
+              <p>Outreach Secondary School is a community-led institution offering inclusive secondary education that blends strong academics with vocational training, ICT, and pastoral support to empower learners for life and work.</p>
+              <a class="btn btn-outline-primary" href="about.html">Learn more</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects gallery -->
+    <section id="projects" class="container py-3">
+      <h2 class="h4 text-center">Ongoing Projects</h2>
+      <div class="project-gallery row g-3 mt-3">
+        <div class="col-6 col-md-3 text-center">
+          <img src="dorm.webp" alt="Dormitory Construction" class="img-fluid rounded" />
+          <p class="mt-2 gallery-title">Dormitory Construction</p>
+        </div>
+        <div class="col-6 col-md-3 text-center">
+          <img src="computer_lab.jpeg" alt="Computer Lab" class="img-fluid rounded" />
+          <p class="mt-2 gallery-title">Our Computer Laboratory</p>
+        </div>
+        <div class="col-6 col-md-3 text-center">
+          <img src="school_farm.jpg" alt="School Farm" class="img-fluid rounded" />
+          <p class="mt-2 gallery-title">Our School Farm</p>
+        </div>
+        <div class="col-6 col-md-3 text-center">
+          <img src="School_Administration_block.jpg" alt="Administration block" class="img-fluid rounded" />
+          <p class="mt-2 gallery-title">School Administration Block</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="bg-light py-4">
+      <div class="container">
+        <h3 class="text-center mb-4">What Our Community Says</h3>
+        <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="p-4 bg-white border rounded shadow-sm text-center">
+                <p class="fst-italic">“Outreach SS gave me confidence to speak and lead. The debate club changed my life.”</p>
+                <p class="fw-bold mb-0">Akankwatsa Prosper, Head Prefect</p>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <div class="p-4 bg-white border rounded shadow-sm text-center">
+                <p class="fst-italic">“As a parent, I'm grateful for the inclusive support my daughter receives. This school truly cares.”</p>
+                <p class="fw-bold mb-0">Mrs. Nalubega, Parent</p>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <div class="p-4 bg-white border rounded shadow-sm text-center">
+                <p class="fst-italic">“The science fair helped me discover my passion for engineering. I'll never forget that moment.”</p>
+                <p class="fw-bold mb-0">Daniel, S4 Student</p>
+              </div>
+            </div>
+          </div>
+
+          <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev" aria-label="Previous testimonial">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next" aria-label="Next testimonial">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Calendar table + clock -->
+    <section class="container py-5" id="calendar">
+      <h3 class="text-center mb-4">Academic Calendar - 2025</h3>
+
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped align-middle">
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">Term</th>
+              <th scope="col">Start Date</th>
+              <th scope="col">End Date</th>
+              <th scope="col">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Term I</td>
+              <td>February 10, 2025</td>
+              <td>May 9, 2025</td>
+              <td>Senior One begins</td>
+            </tr>
+            <tr>
+              <td>Term II</td>
+              <td>June 2, 2025</td>
+              <td>August 29, 2025</td>
+              <td>Mid-year assessments</td>
+            </tr>
+            <tr>
+              <td>Term III</td>
+              <td>September 15, 2025</td>
+              <td>December 5, 2025</td>
+              <td>National exams period</td>
+            </tr>
+            <tr>
+              <td>Mock Exams</td>
+              <td>July 14, 2025</td>
+              <td>July 25, 2025</td>
+              <td>Senior Four and Senior Six preparation</td>
+            </tr>
+            <tr>
+              <td>Speech Day</td>
+              <td>October 18, 2025</td>
+              <td>October 18, 2025</td>
+              <td>Annual celebration and awards ceremony</td>
+            </tr>
+            <tr>
+              <td>Holiday Break</td>
+              <td>December 6, 2025</td>
+              <td>January 9, 2026</td>
+              <td>End-of-year vacation</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Clock + tooltip -->
+      <div class="clock-wrap mt-4 d-flex flex-column align-items-center">
+        <h4 id="cityName" class="city mb-2"></h4>
+        <div class="clock" role="img" aria-label="Analog clock showing local time">
+          <svg viewBox="0 0 100 100" width="200" height="200" aria-hidden="true">
+            <defs>
+              <linearGradient id="faceGradient" x1="0" x2="1" y1="0" y2="1">
+                <stop offset="0%" stop-color="#ff3b3b" />
+                <stop offset="100%" stop-color="#ffd43b" />
+              </linearGradient>
+            </defs>
+            <circle cx="50" cy="50" r="48" fill="url(#faceGradient)" stroke="#000" stroke-width="1" />
+            <g stroke="#000" stroke-width="2">
+              <line x1="50" y1="4" x2="50" y2="10" />
+              <line x1="83.3" y1="16.7" x2="79" y2="21" />
+              <line x1="96" y1="50" x2="90" y2="50" />
+              <line x1="83.3" y1="83.3" x2="79" y2="79" />
+              <line x1="50" y1="96" x2="50" y2="90" />
+              <line x1="16.7" y1="83.3" x2="21" y2="79" />
+              <line x1="4" y1="50" x2="10" y2="50" />
+              <line x1="16.7" y1="16.7" x2="21" y2="21" />
+            </g>
+            <g id="hands" transform="translate(50,50)">
+              <line id="hourHand" x1="0" y1="0" x2="0" y2="-22" stroke="#000" stroke-width="3" stroke-linecap="round" />
+              <line id="minuteHand" x1="0" y1="0" x2="0" y2="-32" stroke="#000" stroke-width="2" stroke-linecap="round" />
+              <line id="secondHand" x1="0" y1="3" x2="0" y2="-36" stroke="#222" stroke-width="1" stroke-linecap="round" />
+              <circle cx="0" cy="0" r="2" fill="#000" />
+            </g>
+          </svg>
+
+          <button id="timePoint" class="time-point" data-date="2025-11-12" aria-describedby="timeTooltip" aria-label="Show date">●</button>
+          <div id="timeTooltip" class="tooltip" role="tooltip" aria-hidden="true">2025-11-12</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick links -->
+    <section id="quick-links" class="bg-light text-center py-3 small text-muted">
+      <div class="container">
+        <h2 class="h5 text-danger">Quick Links</h2>
+        <ul class="quick-list list-unstyled d-flex flex-wrap justify-content-center gap-3 mb-0">
+          <li><a href="#calendar">School Calendar</a></li>
+          <li><a href="admissions.html">Online Application</a></li>
+          <li><a href="admissions.html#fees">School Fees Structure</a></li>
+          <li><a href="news.html">School News</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html#faqs">FAQs</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer bg-light text-center py-3 small text-muted">
+    <div class="container">
+      <p class="mb-1"><strong>Contact Us</strong></p>
+      <p class="mb-1">Headteacher: <br>Mr. Okello James - +256773267910</p>
+      <p class="mb-1">Deputy Headteacher: <br>Ms. Ruth Achen - +256789009011</p>
+      <p class="mb-1">Director of Studies: <br>Mr. Kato Emmanuel - +256784456789</p>
+      <p class="mb-1">&copy; 2025 Outreach Secondary School. All rights reserved.</p>
+      <p class="mb-0">Email: <a href="mailto:info@outreachschool.org">info@outreachschool.org</a> | Location: Baggala, Mpigi District, Uganda</p>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button id="backToTop" class="btn btn-warning back-to-top" aria-label="Back to top">⬆ Top</button>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+  <script src="script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>News & Events - Outreach Secondary School</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Nav overlay styling */
+    .nav-overlay {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,.55);
+      z-index: 1200;
+    }
+    .nav-panel {
+      background: #fff;
+      padding: 1rem;
+      border-radius: 10px;
+      width: min(92%,380px);
+      box-shadow: 0 12px 30px rgba(0,0,0,.12);
+    }
+    .nav-panel a {
+      display: block;
+      padding: .6rem 0;
+      color: #b71c1c;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 1px solid #f2f2f2;
+    }
+
+    /* Back-to-top button */
+    .back-to-top {
+      position: fixed;
+      right: 1rem;
+      bottom: 1rem;
+      z-index: 1200;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      background: linear-gradient(180deg,#f7c900,#f2b600);
+      color: #111;
+      box-shadow: 0 8px 20px rgba(11,24,38,0.12);
+      border: none;
+      cursor: pointer;
+      transition: transform .18s ease, opacity .18s ease;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .back-to-top.visible { opacity: 1; pointer-events: auto; }
+    .back-to-top:hover { transform: translateY(-3px); }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="bg-light shadow-sm">
+    <div class="container d-flex align-items-center justify-content-between py-2">
+      <div class="d-flex align-items-center gap-2">
+        <img src="logo.png" alt="Outreach Logo" style="width:56px;height:56px;border-radius:8px;object-fit:cover">
+        <span class="fw-bold text-danger">OUTREACH SECONDARY SCHOOL</span>
+      </div>
+
+      <!-- Desktop nav -->
+      <nav class="d-none d-md-flex gap-3">
+        <a href="index.html" class="text-dark fw-semibold">Home</a>
+        <a href="news.html" class="text-dark fw-semibold">News</a>
+        <a href="gallery.html" class="text-dark fw-semibold">Gallery</a>
+        <a href="contact.html" class="text-dark fw-semibold">Contact</a>
+        <a href="admissions.html" class="text-dark fw-semibold">Admissions</a>
+      </nav>
+      <!-- Mobile toggle -->
+      <button id="menuToggle" class="btn btn-sm btn-outline-dark d-md-none" aria-controls="navOverlay" aria-expanded="false" aria-label="Open menu">
+        Menu
+      </button>
+    </div>
+    <!-- Mobile nav overlay -->
+    <div id="navOverlay" class="d-none nav-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="nav-panel" role="document">
+        <button id="navClose" class="btn btn-sm btn-outline-secondary mb-3">Close</button>
+        <nav aria-label="Primary">
+          <a href="index.html" onclick="closeMenu()">Home</a>
+          <a href="about.html" onclick="closeMenu()">About</a>
+          <a href="gallery.html" onclick="closeMenu()">Gallery</a>
+          <a href="contact.html" onclick="closeMenu()">Contact</a>
+          <a href="admissions.html" onclick="closeMenu()">Admissions</a>
+        </nav>
+      </div>
+    </div>
+      <form class="mt-3" style="padding-right: auto; padding-left: auto;" action="search.html" method="GET" role="search">
+    <input name="q" type="search" class="form-control form-control-sm" placeholder="Search site..." />
+  </form>
+  </header>
+
+  <!-- Page Title -->
+  <section class="bg-primary text-white text-center py-5">
+    <div class="container">
+      <h2 class="display-5">News & Events</h2>
+      <p class="lead">Stay updated with our latest announcements, projects, and celebrations.</p>
+    </div>
+  </section>
+
+  <!-- News Cards -->
+  <main class="container py-5">
+    <div class="row g-4">
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm">
+          <img src="roofing.jpg" class="card-img-top" alt="Dormitory construction">
+          <div class="card-body">
+            <h5 class="card-title">Dormitory Block Near Completion</h5>
+            <p class="card-text">Our new girls' dormitory is now at roofing stage. This project will improve boarding facilities and safety.</p>
+            <span class="badge bg-success">Infrastructure</span>
+          </div>
+          <div class="card-footer text-muted small">Posted: <span class="post-time"></span></div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm">
+          <img src="teacher-training.jpg" class="card-img-top" alt="ICT training">
+          <div class="card-body">
+            <h5 class="card-title">ICT Training for Teachers</h5>
+            <p class="card-text">Teachers completed a 3-day workshop on digital tools and e-learning platforms to enhance classroom delivery.</p>
+            <span class="badge bg-info text-dark">Training</span>
+          </div>
+          <div class="card-footer text-muted small">Posted: <span class="post-time"></span></div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm">
+          <img src="solar irrigation.jpg" class="card-img-top" alt="Science fair">
+          <div class="card-body">
+            <h5 class="card-title">Annual Science Fair</h5>
+            <p class="card-text">Students showcased innovative projects including solar-powered irrigation and mobile lab kits.</p>
+            <span class="badge bg-warning text-dark">Events</span>
+          </div>
+          <div class="card-footer text-muted small">Posted: <span class="post-time"></span></div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <main class="container py-5">
+  <div id="newsContainer" class="row g-4"></div>
+</main>
+
+  <!-- Footer -->
+  <footer class="site-footer bg-light text-center py-3 small text-muted">
+    <div class="container">
+      <p class="mb-1"><strong>Contact Us</strong></p>
+      <p class="mb-1">Headteacher: <br>Mr. Okello James - +256773267910</p>
+      <p class="mb-1">Deputy Headteacher: <br>Ms. Ruth Achen - +256789009011</p>
+      <p class="mb-1">Director of Studies: <br>Mr. Kato Emmanuel - +256784456789</p>
+      <p class="mb-1">&copy; 2025 Outreach Secondary School. All rights reserved.</p>
+      <p class="mb-0">Email: <a href="mailto:info@outreachschool.org">info@outreachschool.org</a> | Location: Baggala, Mpigi District, Uganda</p>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button id="backToTop" class="btn btn-warning back-to-top" aria-label="Back to top">⬆ Top</button>
+
+  <!-- Scripts -->
+  <script>
+    // Nav toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navOverlay = document.getElementById('navOverlay');
+    const navClose = document.getElementById('navClose');
+    function openMenu(){
+      navOverlay.classList.remove('d-none');
+      navOverlay.setAttribute('aria-hidden','false');
+      if(menuToggle) menuToggle.setAttribute('aria-expanded','true');
+      if(navClose) navClose.focus();
+    }
+    function closeMenu(){
+      navOverlay.classList.add('d-none');
+      navOverlay.setAttribute('aria-hidden','true');
+      if(menuToggle) menuToggle.setAttribute('aria-expanded','false');
+      if(menuToggle) menuToggle.focus();
+    }
+    if(menuToggle) menuToggle.addEventListener('click', openMenu);
+    if(navClose) navClose.addEventListener('click', closeMenu);
+    window.closeMenu = closeMenu;
+
+    // Back-to-top visibility
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 250) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    });
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Auto-update post times
+    function formatDateTime(date) {
+      return date.toLocaleString('en-US', {
+        weekday: 'short',
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+    }
+    document.querySelectorAll('.post-time').forEach(span => {
+      span.textContent = formatDateTime(new Date());
+    });
+
+     function formatDateTime(dateStr){
+    const d = new Date(dateStr);
+    return d.toLocaleString('en-US',{
+      year:'numeric',month:'short',day:'numeric',
+      hour:'2-digit',minute:'2-digit'
+    });
+  }
+
+  const posts = JSON.parse(localStorage.getItem('newsPosts') || '[]');
+  const container = document.getElementById('newsContainer');
+
+  posts.forEach(post=>{
+    const col = document.createElement('div');
+    col.className = 'col-md-6 col-lg-4';
+    col.innerHTML = `
+      <div class="card h-100 shadow-sm">
+        ${post.image ? `<img src="${post.image}" class="card-img-top" alt="${post.title}">` : ''}
+        <div class="card-body">
+          <h5 class="card-title">${post.title}</h5>
+          <p class="card-text">${post.content}</p>
+          <span class="badge bg-info text-dark">${post.category}</span>
+        </div>
+        <div class="card-footer text-muted small">Posted: ${formatDateTime(post.time)}</div>
+      </div>`;
+    container.appendChild(col);
+  });
+  </script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js" defer></script>
+</body>
+</html>

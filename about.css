@@ -1,0 +1,44 @@
+/* Responsive utilities and identity */
+:root{
+  --max-width:1100px;
+  --brand-accent:#d62828;
+  --bg-accent:#f7c900;
+}
+
+html { box-sizing:border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial; -webkit-font-smoothing:antialiased; }
+*,*::before,*::after{ box-sizing:inherit; }
+
+body { margin:0; color:#222; font-size: clamp(15px, 1rem + 0.4vw, 18px); line-height:1.55; background:#fff; }
+
+/* Header */
+.site-header { background: var(--bg-accent); color:#111; }
+.logo { width:48px; height:auto; border-radius:6px; }
+.brand { font-weight:700; font-size: clamp(1rem, 1rem + 0.8vw, 1.4rem); color:#b71c1c; }
+.brand-accent { color: #b71c1c; font-weight:900; }
+
+/* Nav overlay mobile */
+.nav-overlay { position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.55); z-index:1200; }
+.nav-panel { background:#fff; width:min(92%,420px); padding:1.25rem; border-radius:8px; box-shadow: 0 8px 24px rgba(0,0,0,0.18); }
+.nav-link { color:var(--brand-accent); text-decoration:none; font-weight:600; padding:.5rem 0; border-bottom:1px solid #f1f1f1; }
+
+/* Card content */
+.card { border:0; border-radius:8px; }
+.card p, .card li { color:#222; }
+
+/* List group (board) */
+.list-group-item { border:1px solid #eee; }
+
+/* Quick links */
+#quick-links { font-family: 'Lucida Sans', Arial, sans-serif; }
+
+/* Footer */
+.site-footer { border-top:1px solid #eee; }
+
+/* Accessibility */
+a:focus, button:focus, .nav-link:focus { outline: 3px solid rgba(183,28,28,0.14); outline-offset:3px; border-radius:6px; }
+
+/* Small screen tweaks */
+@media (max-width:780px){
+  .brand { font-size:1rem; }
+  .nav-panel { width:92%; }
+}

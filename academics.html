@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Academics - Outreach SS</title>
+  <meta name="description" content="Subjects and vocational training offered at Outreach Secondary School" />
+  <link rel="icon" type="image/x-icon" href="favicon-32x32.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+  <link rel="stylesheet" href="academics.css" />
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+        <img src="logo.png" alt="Outreach logo" class="logo" />
+        <span class="brand-text"><strong><span class="brand-accent">O</span>UTREACH <span class="brand-accent">S</span>ECONDARY <span class="brand-accent">S</span>CHOOL</strong></span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link active" href="news.html" aria-current="page">News</a></li>
+          <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="rules.html">Rules</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+          <form class="mt-3" action="search.html" method="GET" role="search">
+          <input name="q" type="search" class="form-control form-control-sm" placeholder="Search site..." />
+        </form>
+
+  <!-- Header -->
+  <header class="bg-secondary text-white text-center py-4">
+    <div class="container">
+      <h1 class="h3 mb-1">Academics</h1>
+      <p class="lead mb-0">Subjects and Vocational Training Offered at Outreach SS</p>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container py-5 flex-grow-1">
+    <section class="mb-5">
+      <h2 class="h5 text-danger mb-3">Subjects Offered</h2>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <ul class="list-group shadow-sm">
+            <li class="list-group-item">Mathematics</li>
+            <li class="list-group-item">English Language & Literature</li>
+            <li class="list-group-item">Biology, Chemistry, Physics</li>
+            <li class="list-group-item">Geography, History, CRE</li>
+            <li class="list-group-item">ICT & Computer Studies</li>
+            <li class="list-group-item">Entrepreneurship</li>
+          </ul>
+        </div>
+
+        <div class="col-md-6">
+          <h3 class="h5 text-danger mb-3">Vocational Training Courses</h3>
+          <ul class="list-group shadow-sm">
+            <li class="list-group-item">Agriculture</li>
+            <li class="list-group-item">Art & Design</li>
+            <li class="list-group-item">Technology & Design</li>
+            <li class="list-group-item">Home Economics</li>
+            <li class="list-group-item">Performing Arts</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="h5 text-center mb-4">Academic Life in Pictures</h2>
+
+      <div class="row g-4 gallery" role="list">
+        <div class="col-12 col-sm-6 col-md-4" role="listitem">
+          <button class="gallery-item w-100 p-0 border-0 bg-transparent" data-img="science-lab.avif" data-caption="Science Laboratory" aria-label="Open Science Laboratory image">
+            <img src="science-lab.avif" alt="Science Laboratory" class="img-fluid subject-img rounded shadow-sm">
+          </button>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-4" role="listitem">
+          <button class="gallery-item w-100 p-0 border-0 bg-transparent" data-img="computer-studies.webp" data-caption="ICT & Computer Studies" aria-label="Open ICT & Computer Studies image">
+            <img src="computer-studies.webp" alt="Computer Studies" class="img-fluid subject-img rounded shadow-sm">
+          </button>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-4" role="listitem">
+          <button class="gallery-item w-100 p-0 border-0 bg-transparent" data-img="agriculture.jpg" data-caption="Agriculture Training" aria-label="Open Agriculture Training image">
+            <img src="agriculture.jpg" alt="Agriculture Class" class="img-fluid subject-img rounded shadow-sm">
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Lightbox Modal (Bootstrap) -->
+  <div class="modal fade" id="lightboxModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content bg-dark text-white">
+        <div class="modal-body position-relative text-center">
+          <img id="lightboxImage" src="" class="img-fluid rounded" alt="">
+          <p id="lightboxCaption" class="mt-2 mb-0"></p>
+
+          <button id="prevArrow" class="btn btn-link text-white position-absolute top-50 start-0 translate-middle-y ps-3" aria-label="Previous image">&#10094;</button>
+          <button id="nextArrow" class="btn btn-link text-white position-absolute top-50 end-0 translate-middle-y pe-3" aria-label="Next image">&#10095;</button>
+
+          <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+   <footer class="site-footer bg-light text-center py-3 small text-muted">
+    <div class="container">
+      <p class="mb-1"><strong>Contact Us</strong></p>
+      <p class="mb-1">Headteacher: <br>Mr. Okello James - +256773267910</p>
+      <p class="mb-1">Deputy Headteacher: <br>Ms. Ruth Achen - +256789009011</p>
+      <p class="mb-1">Director of Studies: <br>Mr. Kato Emmanuel - +256784456789</p>
+      <p class="mb-1">&copy; 2025 Outreach Secondary School. All rights reserved.</p>
+      <p class="mb-0">Email: <a href="mailto:info@outreachschool.org">info@outreachschool.org</a> | Location: Baggala, Mpigi District, Uganda</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+  <script src="academics.js" defer></script>
+</body>
+</html>

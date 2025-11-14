@@ -1,0 +1,29 @@
+/* Fix image cropping and improve modal image handling */
+.card-img-top {
+  width: 100%;
+  height: auto;            /* allow natural height to avoid hard cropping */
+  max-height: 320px;       /* safe limit for large images */
+  object-fit: cover;       /* keep cover on cards but allow height to scale */
+  display: block;
+}
+
+/* Keep modal image contained (no crop) */
+#lightboxImage {
+  width: 100%;
+  height: auto;
+  max-height: 60vh;        /* responsive cap, not a strict crop */
+  object-fit: contain;     /* show full image inside modal */
+  margin: 0 auto 1rem;
+}
+
+/* Optional: show a subtle background so portrait/landscape photos look good */
+.modal-body {
+  background: #fff;
+  text-align: center;
+}
+
+/* Small screens */
+@media (max-width:576px){
+  .card-img-top { max-height: 220px; }
+  #lightboxImage { max-height: 50vh; }
+}

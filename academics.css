@@ -1,0 +1,39 @@
+:root{
+  --max-width:1100px;
+  --brand-accent:#d62828;
+  --bg-accent:#f7c900;
+}
+
+html{box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial; -webkit-font-smoothing:antialiased;}
+*,*::before,*::after{box-sizing:inherit;}
+
+body{margin:0;color:#222;background:#fff;font-size:clamp(15px,1rem + 0.4vw,18px);line-height:1.55;}
+
+/* Navbar branding */
+.logo{width:44px;height:auto;border-radius:6px;object-fit:cover;}
+.brand-accent{color:var(--brand-accent);font-weight:900;}
+.brand-text{font-weight:700;}
+
+/* Header */
+header h1{font-size:clamp(1.1rem,1.6vw,1.6rem);}
+
+/* Lists */
+.list-group-item{border:1px solid #eee;}
+
+/* Gallery */
+.subject-img{height:200px;object-fit:cover;width:100%;}
+.gallery .gallery-item{cursor:pointer;transition:transform .15s ease;}
+.gallery .gallery-item:focus,.gallery .gallery-item:hover{transform:scale(1.02);outline:none;}
+
+/* Modal controls */
+#prevArrow,#nextArrow{background:transparent;border:0;font-size:1.6rem;opacity:.9;}
+#prevArrow:focus,#nextArrow:focus{outline:3px solid rgba(255,255,255,.12);}
+
+/* Accessibility */
+a:focus,button:focus,.nav-link:focus{outline:3px solid rgba(214,40,40,0.14);outline-offset:3px;border-radius:6px;}
+
+/* Small screens */
+@media (max-width:600px){
+  .subject-img{height:160px;}
+  .brand-text{font-size:0.95rem;}
+}
