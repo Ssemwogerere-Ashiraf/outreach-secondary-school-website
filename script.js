@@ -75,7 +75,7 @@ if (backBtn) {
 
 // Simple countdown example (replace target date as needed)
 (function setupCountdown(){
-  const target = new Date('2025-11-12T08:00:00'); // example target
+  const target = new Date('2026-02-02T08:00:00'); // example target
   const el = $('#countdown');
   if (!el) return;
   function update() {
@@ -212,3 +212,4 @@ window.searchSite = searchSite;
   // ensure button appears if page is loaded mid-scroll (deep links)
   setTimeout(onScroll, 200);
 })();
+
