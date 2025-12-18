@@ -75,20 +75,28 @@ if (backBtn) {
 
 // Simple countdown example (replace target date as needed)
 (function setupCountdown(){
-  const target = new Date('2026-02-02T08:00:00'); // example target
+  const target = new Date('2026-02-02T08:00:00');
   const el = $('#countdown');
-  if (!el) return;
+  if (el.length === 0) return;
+
   function update() {
     const now = new Date();
     const diff = Math.max(0, target - now);
-    if (diff === 0) { el.textContent = 'Now open'; return; }
+
+    if (diff === 0) {
+      el.text('Now open');
+      return;
+    }
+
     const days = Math.floor(diff / (1000*60*60*24));
-    const hrs = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+    const hrs  = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
     const mins = Math.floor((diff % (1000*60*60)) / (1000*60));
-    el.textContent = `${days}d ${hrs}h ${mins}m`;
+
+    el.text(`${days}d ${hrs}h ${mins}m`);
   }
+
   update();
-  setInterval(update, 60*1000);
+  setInterval(update, 60 * 1000);
 })();
 
 // Clock update (analog hands) and timezone city detection using Intl API
@@ -212,4 +220,5 @@ window.searchSite = searchSite;
   // ensure button appears if page is loaded mid-scroll (deep links)
   setTimeout(onScroll, 200);
 })();
+
 
