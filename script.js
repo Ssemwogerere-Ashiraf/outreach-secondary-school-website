@@ -79,24 +79,34 @@ if (backBtn) {
   const el = $('#countdown');
   if (el.length === 0) return;
 
+  // OPTIONAL: where to go when countdown ends
+  const redirectUrl = null; // e.g. 'register.html'
+
   function update() {
     const now = new Date();
     const diff = Math.max(0, target - now);
 
     if (diff === 0) {
       el.text('Now open');
+
+      // OPTIONAL redirect
+      if (redirectUrl) {
+        window.location.href = redirectUrl;
+      }
+
       return;
     }
 
-    const days = Math.floor(diff / (1000*60*60*24));
-    const hrs  = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-    const mins = Math.floor((diff % (1000*60*60)) / (1000*60));
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hrs  = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const secs = Math.floor((diff % (1000 * 60)) / 1000);
 
-    el.text(`${days}d ${hrs}h ${mins}m`);
+    el.text(`${days}d ${hrs}h ${mins}m ${secs}s`);
   }
 
   update();
-  setInterval(update, 60 * 1000);
+  setInterval(update, 1000); // update every second
 })();
 
 // Clock update (analog hands) and timezone city detection using Intl API
@@ -220,5 +230,6 @@ window.searchSite = searchSite;
   // ensure button appears if page is loaded mid-scroll (deep links)
   setTimeout(onScroll, 200);
 })();
+
 
 
